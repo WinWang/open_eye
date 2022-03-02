@@ -1,0 +1,153 @@
+name: open_eye
+description: A new Flutter project.
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.15.0 <3.0.0"
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.测试我的子模块分之数据更新
+  cupertino_icons: ^1.0.2
+  # rxdart https://pub.flutter-io.cn/packages/rxdart
+  rxdart: ^0.27.1
+  #GetX状态管理框架 https://pub.flutter-io.cn/packages/get
+  get: ^4.6.1
+  #toast https://pub.flutter-io.cn/packages/fluttertoast
+  fluttertoast: ^8.0.8
+  # 网络请求库 https://github.com/flutterchina/dio
+  dio: 4.0.1
+  #网络请求框架
+  retrofit: '>=3.0.0 <4.0.0'
+  # 网络检测 https://pub.flutter-io.cn/packages/connectivity
+  connectivity: 3.0.6
+  # 加载SVG图片 https://pub.flutter-io.cn/packages/flutter_svg
+  flutter_svg: 0.22.0
+  # lottie动画 https://pub.flutter-io.cn/packages/flutter_lottie
+  lottie: ^1.1.0
+  # SP键值对存储 https://pub.flutter-io.cn/packages/shared_preferences
+  shared_preferences: ^2.0.6
+  # WebView
+  webview_flutter: ^2.0.12
+  #读取相册
+  image_picker: 0.8.3+3
+  # https://github.com/flutter/plugins/tree/master/packages/url_launcher
+  url_launcher: ^6.0.9
+  #文件路径管理工具类
+  path_provider: ^2.0.2
+  #上拉刷新、下拉加载
+  pull_to_refresh: ^2.0.0
+  #加载html标签
+  flutter_html: ^2.1.2
+  #调用分享平台 https://pub.flutter-io.cn/packages/share
+  share: ^2.0.4
+  #圖片保存到本地 https://pub.flutter-io.cn/packages/image_gallery_saver
+  image_gallery_saver: ^1.7.1
+  #权限申请框架 https://pub.flutter-io.cn/packages/permission_handler
+  permission_handler: ^8.1.6
+  #数据json解析（官方框架）
+  json_annotation: ^4.4.0 # null safe
+  json_serializable: ^6.1.1 # null safe
+  #网络响应日志打印框架
+  pretty_dio_logger: ^1.2.0-beta-1
+  #普通日志打印框架  https://github.com/leisim/logger
+  logger: ^1.1.0
+  #屏幕适配
+  flutter_screenutil: ^5.0.0
+  #哆啦A梦
+  dokit: ^0.8.0-nullsafety.0
+  #Kefram性能优化组件  https://github.com/LianjiaTech/keframe/blob/master/README-ZH.md
+  keframe: ^2.0.2
+  #  图片缓存加载框架
+  cached_network_image: ^3.2.0
+  #  photo_view图片预览功能插件
+  photo_view: ^0.13.0
+  #  事件总线--EventBus
+  event_bus: ^2.0.0
+  #  轮播
+  card_swiper: ^1.0.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^1.0.0
+  retrofit_generator: '>=3.0.0 <4.0.0'
+  build_runner: ^2.1.5
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/images/loading/
+    - assets/images/
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware.
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
+
+#  module:
+#    androidX: true
+#    androidPackage: com.jindashi.stockcircle
+#    iosBundleIdentifier: com.jds.dyzt
