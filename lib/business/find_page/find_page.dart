@@ -36,23 +36,26 @@ class FindPage extends BaseStatefulWidget<FindController> {
 
   /// 创建Tab
   Widget _createTabBar() {
-    return TabBar(
-      tabs: controller.tabList
-          .map((element) => Tab(
-                text: element,
-              ))
-          .toList(),
-      labelColor: ColorStyle.color_333333,
-      labelStyle: TextStyle(fontSize: 32.sp, fontWeight: FontWeight.bold),
-      unselectedLabelColor: ColorStyle.color_999999,
-      indicatorColor: ColorStyle.color_EA4C43,
-      isScrollable: false,
-      controller: controller.tabController,
-      indicatorWeight: 6.w,
-      indicatorPadding: EdgeInsets.symmetric(horizontal: 100.w),
-      onTap: (index) {
-        controller.pagerController.jumpToPage(index);
-      },
+    return Container(
+      child: TabBar(
+        tabs: controller.tabList
+            .map((element) => Tab(
+                  text: element,
+                ))
+            .toList(),
+        labelColor: ColorStyle.color_white,
+        labelStyle: TextStyle(fontSize: 32.sp, fontWeight: FontWeight.bold),
+        unselectedLabelColor: ColorStyle.color_CCCCCC,
+        indicatorColor: ColorStyle.color_white,
+        isScrollable: false,
+        controller: controller.tabController,
+        indicatorWeight: 6.w,
+        indicatorPadding: EdgeInsets.symmetric(horizontal: 100.w),
+        onTap: (index) {
+          controller.pagerController.jumpToPage(index);
+        },
+      ),
+      color: ColorStyle.color_EA4C43,
     );
   }
 

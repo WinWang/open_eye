@@ -47,11 +47,11 @@ AppBar createAppBar(String titleString, bool showBackButton) {
   return AppBar(
     title: Text(
       titleString,
-      style: const TextStyle(color: ColorStyle.color_333333),
+      style: const TextStyle(color: ColorStyle.color_white),
     ),
     centerTitle: true,
-    backgroundColor: Colors.white,
-    iconTheme: const IconThemeData(color: ColorStyle.color_333333),
+    backgroundColor: ColorStyle.color_EA4C43,
+    iconTheme: const IconThemeData(color: ColorStyle.color_white),
     elevation: 0,
     systemOverlayStyle: systemOverLayoutStyle(),
     leading: showBackButton ? leadingButton() : null,
@@ -82,9 +82,9 @@ Future<void> pop() async {
 SystemUiOverlayStyle systemOverLayoutStyle() {
   return const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
-      systemNavigationBarColor: Colors.white,
-      systemNavigationBarIconBrightness: Brightness.dark,
-      statusBarIconBrightness: Brightness.dark);
+      systemNavigationBarColor: ColorStyle.color_EA4C43,
+      systemNavigationBarIconBrightness: Brightness.light,
+      statusBarIconBrightness: Brightness.light);
 }
 
 ///异常布局
