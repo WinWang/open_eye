@@ -11,7 +11,7 @@ Widget createEmptyWidget(BaseController controller) {
   return Material(
     child: Center(
         widthFactor: double.infinity,
-        child: InkWell(
+        child: GestureDetector(
           onTap: () {
             controller.showLoading();
             controller.loadNet();
@@ -43,18 +43,28 @@ Widget createEmptyWidget(BaseController controller) {
 }
 
 ///创建AppBar
-AppBar createAppBar(String titleString, bool showBackButton) {
+AppBar createAppBar(
+    String titleString, bool showBackButton, List<Widget>? actionWidget,
+    {Widget? titleWidget}) {
   return AppBar(
-    title: Text(
-      titleString,
-      style: const TextStyle(color: ColorStyle.color_white),
-    ),
+    title: titleWidget ?? titleView(titleString),
     centerTitle: true,
     backgroundColor: ColorStyle.color_EA4C43,
     iconTheme: const IconThemeData(color: ColorStyle.color_white),
     elevation: 0,
     systemOverlayStyle: systemOverLayoutStyle(),
     leading: showBackButton ? leadingButton() : null,
+    actions: actionWidget,
+  );
+}
+
+Widget titleView(String titleString) {
+  return Text(
+    titleString,
+    style: TextStyle(
+        color: ColorStyle.color_white,
+        fontSize: 34.sp,
+        fontWeight: FontWeight.bold),
   );
 }
 
@@ -92,7 +102,7 @@ Widget createErroWidget(BaseController controller, String? error) {
   return Material(
       child: Center(
           widthFactor: double.infinity,
-          child: InkWell(
+          child: GestureDetector(
             onTap: () {
               controller.showLoading();
               controller.loadNet();
@@ -126,7 +136,7 @@ Widget createCustomHoldreWidget(String? error, BaseController controller) {
   return Material(
       child: Center(
           widthFactor: double.infinity,
-          child: InkWell(
+          child: GestureDetector(
             onTap: () {
               controller.showLoading();
               controller.loadNet();

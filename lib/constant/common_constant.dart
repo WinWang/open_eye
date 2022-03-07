@@ -20,4 +20,15 @@ class CommonConstant {
   static const METHOD_ON_BACK_PRESSED = "onBackPressed";
 
   ///*************************MethodChannel_方法变量****************************///
+
+///常用字段
+ static const UUID = "3e7ee30c6fc0004a773dc33b0597b5732b145c04";
+
+ static const DEVICE_NUM = "ONEPLUS%20A6000";
+
+
+
+
+
+
 }

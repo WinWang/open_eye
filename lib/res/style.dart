@@ -245,7 +245,7 @@ class DividerStyle {
     height: 2.w,
     indent: 20,
     endIndent: 20,
-    color: ColorStyle.color_474747,
+    color: ColorStyle.colorShadow2,
   );
 
 

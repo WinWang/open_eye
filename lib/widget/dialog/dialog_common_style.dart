@@ -7,6 +7,7 @@ import 'package:open_eye/res/style.dart';
 import 'package:open_eye/widget/behavior/over_scroll_behavior.dart';
 
 /// @description :公共通用弹窗
+// ignore: must_be_immutable
 class CommonDialog extends StatelessWidget {
   ///标题
   String title = '';

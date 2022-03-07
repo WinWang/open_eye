@@ -6,8 +6,15 @@ class RouterUtils {
   static void toPreviewPhotoView(String? imageUrl) {
     imageUrl = imageUrl ?? "";
     if (imageUrl.isNotEmpty) {
-      Get.toNamed(AppRoutes.PHOTO_PREVIEW_PAGE, arguments: imageUrl);
+      Get.toNamed(AppRoutes.photoPreviewPage, arguments: imageUrl);
     }
   }
+
+  ///搜索页面
+  static void toSearchPage() {
+    Get.toNamed(AppRoutes.searchPage);
+  }
+
+
 
 }

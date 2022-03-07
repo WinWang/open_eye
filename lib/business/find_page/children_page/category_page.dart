@@ -6,6 +6,7 @@ import 'package:open_eye/base/pageWidget/base_stateful_widget.dart';
 import 'package:open_eye/business/find_page/model/Type_entity.dart';
 import 'package:open_eye/business/find_page/widget/item_category_widget.dart';
 import 'package:open_eye/http/apiservice/api_service.dart';
+import 'package:open_eye/route/routes.dart';
 
 ///分类页面
 class CategoryPage extends BaseStatefulWidget<CategoryController> {
@@ -23,7 +24,17 @@ class CategoryPage extends BaseStatefulWidget<CategoryController> {
           crossAxisSpacing: 3,
         ),
         itemBuilder: (context, index) {
-          return ItemCategoryWidget(controller.dataList[index]);
+          return GestureDetector(
+            child: ItemCategoryWidget(controller.dataList[index]),
+            onTap: () {
+              var itemData = controller.dataList[index];
+              Map<String, String> map = {};
+              map["headerImg"] = itemData.headerImage ?? "";
+              map["typeName"] = itemData.name ?? "";
+              map["typeId"] = "${itemData.id}";
+              Get.toNamed(AppRoutes.typeDetailPage, parameters: map);
+            },
+          );
         },
         itemCount: controller.dataList.length,
       ),

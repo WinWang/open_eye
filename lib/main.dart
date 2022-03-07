@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:open_eye/business/main_page/main_page.dart';
+import 'package:open_eye/business/main_page.dart';
 import 'package:open_eye/route/routes.dart';
 import 'package:open_eye/utils/injection.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -59,7 +59,7 @@ class _MyAppState extends State<MyApp> {
           builder: () => GetMaterialApp(
                 getPages: AppRoutes.routerPages,
                 defaultTransition: Transition.rightToLeft,
-                transitionDuration: const Duration(milliseconds: 200),
+                transitionDuration: const Duration(milliseconds: 150),
                 title: 'OpenEye',
                 theme: ThemeData(
                   primarySwatch: Colors.red,

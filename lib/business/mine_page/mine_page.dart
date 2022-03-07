@@ -1,7 +1,11 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:open_eye/base/controller/base_controller.dart';
 import 'package:open_eye/base/pageWidget/base_stateful_widget.dart';
+import 'package:open_eye/res/colors.dart';
+import 'package:open_eye/res/style.dart';
 import 'package:open_eye/utils/log_utils.dart';
 
 class MinePage extends BaseStatefulWidget<MineController> {
@@ -9,7 +13,39 @@ class MinePage extends BaseStatefulWidget<MineController> {
 
   @override
   Widget buildContent(BuildContext context) {
-    return Container();
+    return Column(
+      children: [
+        Container(
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Image.asset(
+                "assets/images/back_mine.png",
+                fit: BoxFit.fill,
+                height: 500.w,
+              ),
+              Column(
+                children: [
+                  ClipOval(
+                    child: Image.asset(
+                      "assets/images/head_mine.jpeg",
+                      height: 150.w,
+                      width: 150.w,
+                    ),
+                  ),
+                  Box.hBox20,
+                  Text(
+                    "Flutter",
+                    style: TextStyle(
+                        fontSize: 32.sp, color: ColorStyle.color_white),
+                  ),
+                ],
+              )
+            ],
+          ),
+        )
+      ],
+    );
   }
 
   @override
@@ -18,7 +54,9 @@ class MinePage extends BaseStatefulWidget<MineController> {
   }
 
   @override
-  bool showBackButton() => false;
+  bool showTitleBar() {
+    return false;
+  }
 }
 
 class MineController extends BaseController {

@@ -1,72 +1,34 @@
-import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:open_eye/base/pageWidget/common_stateless_widget.dart';
-import 'package:open_eye/business/home_page/model/ItemList.dart';
+import 'package:open_eye/business/find_page/model/Focus_Item_Entity.dart';
 import 'package:open_eye/res/colors.dart';
 import 'package:open_eye/res/style.dart';
 import 'package:open_eye/route/routes.dart';
 import 'package:open_eye/widget/base_network_image.dart';
 
-class ItemHomeWidget extends CommonStatelessWidget {
-  ItemList itemData;
-  int index;
-  final SwiperController _controller;
+// ignore: must_be_immutable
+class ItemRankWidget extends CommonStatelessWidget {
+  FocusItemEntity itemData;
 
-  ItemHomeWidget(this.itemData, this.index, this._controller, {Key? key})
-      : super(key: key);
+  ItemRankWidget(this.itemData, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var type = itemData.type ?? "";
-    if (type == "banner2") {
-      return _createSwiper();
-    } else if (type == "video") {
-      return GestureDetector(
-          child: _createContent(),
-          onTap: () {
-            var playUrl = itemData.data?.playUrl;
-            var coverUrl = itemData.data?.cover?.feed;
-            var videoId = itemData.data?.id;
-            var map = <String, String>{};
-            map["playUrl"] = playUrl ?? "";
-            map["coverUrl"] = coverUrl ?? "";
-            map["videoId"] = "$videoId";
-            Get.toNamed(AppRoutes.detailPage, parameters: map);
-          });
-    } else {
-      return const SizedBox(
-        height: 0,
-      );
-    }
-  }
-
-  Widget _createSwiper() {
-    // return BaseNetworkImage(itemData.data?.image ?? "",height: 400.w,fit: BoxFit.fitWidth,);
-    var bannerUrl = itemData.data?.image ?? "";
-    return SizedBox(
-      height: 400.w,
-      child: Swiper(
-        autoplay: true,
-        autoplayDelay: 5000,
-        controller: _controller,
-        itemCount: bannerUrl.isEmpty ? 0 : 1,
-        itemBuilder: (BuildContext context, int index) {
-          return BaseNetworkImage(
-            bannerUrl,
-            height: 400.w,
-            fit: BoxFit.fitWidth,
-          );
-        },
-        pagination: SwiperPagination(
-            builder: DotSwiperPaginationBuilder(
-                size: 12.w,
-                activeSize: 12.w,
-                activeColor: ColorStyle.color_EA4C43,
-                color: ColorStyle.color_999999)),
-      ),
+    return GestureDetector(
+      child: _createContent(),
+      onTap: () {
+        var playUrl = itemData.data?.playUrl;
+        var coverUrl = itemData.data?.cover?.feed;
+        var videoId = itemData.data?.id;
+        var map = <String, String>{};
+        map["playUrl"] = playUrl ?? "";
+        map["coverUrl"] = coverUrl ?? "";
+        map["videoId"] = "$videoId";
+        Get.toNamed(AppRoutes.detailPage, parameters: map);
+      },
     );
   }
 

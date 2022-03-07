@@ -91,6 +91,8 @@ dependencies:
   event_bus: ^2.0.0
   #  轮播
   card_swiper: ^1.0.4
+  #  播放器
+  fijkplayer: ^0.10.1
 
 dev_dependencies:
   flutter_test:

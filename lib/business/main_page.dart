@@ -8,6 +8,7 @@ import 'package:open_eye/business/find_page/children_page/focus_page.dart';
 import 'package:open_eye/business/find_page/children_page/topic_page.dart';
 import 'package:open_eye/business/find_page/find_page.dart';
 import 'package:open_eye/business/home_page/home_page.dart';
+import 'package:open_eye/business/hot_page/children_page/rank_list_page.dart';
 import 'package:open_eye/business/hot_page/hot_page.dart';
 import 'package:open_eye/business/mine_page/mine_page.dart';
 import 'package:open_eye/res/colors.dart';
@@ -101,5 +102,8 @@ class MainBinding extends Bindings {
     Get.lazyPut(() => FocusController());
     Get.lazyPut(() => CategoryController());
     Get.lazyPut(() => TopicController());
+    Get.lazyPut(() => RankListController(), tag: "weekly");
+    Get.lazyPut(() => RankListController(), tag: "monthly");
+    Get.lazyPut(() => RankListController(), tag: "historical");
   }
 }

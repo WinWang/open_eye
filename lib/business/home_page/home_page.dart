@@ -1,5 +1,5 @@
 import 'package:card_swiper/card_swiper.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:open_eye/base/controller/base_refresh_controller.dart';
 import 'package:open_eye/base/pageWidget/base_stateful_widget.dart';
@@ -7,6 +7,7 @@ import 'package:open_eye/business/home_page/model/Feed_entity.dart';
 import 'package:open_eye/business/home_page/model/ItemList.dart';
 import 'package:open_eye/business/home_page/widget/item_home_widget.dart';
 import 'package:open_eye/http/apiservice/api_service.dart';
+import 'package:open_eye/route/router_utils.dart';
 import 'package:open_eye/utils/log_utils.dart';
 import 'package:open_eye/widget/pull_smart_refresher.dart';
 
@@ -15,16 +16,28 @@ class HomePage extends BaseStatefulWidget<HomeController> {
 
   @override
   Widget buildContent(BuildContext context) {
-    return Obx(() => SizedBox(
-          child: RefreshWidget<HomeController>(
-              child: ListView.builder(
-            itemBuilder: (context, index) {
-              return ItemHomeWidget(controller.dataList[index], index,
-                  controller.swiperController);
-            },
-            itemCount: controller.dataList.length,
-          )),
-        ));
+    return SizedBox(
+      child: RefreshWidget<HomeController>(
+          child: ListView.builder(
+        itemBuilder: (context, index) {
+          // return GestureDetector(
+          //   // child: Hero(
+          //   //   tag: "$index",
+          //   //   child: ItemHomeWidget(
+          //   //       controller.dataList[index], index,
+          //   //       controller.swiperController),
+          //   // ),
+          //   child: ,
+          //   onTap: () {
+          //
+          //   },
+          // );
+          return ItemHomeWidget(
+              controller.dataList[index], index, controller.swiperController);
+        },
+        itemCount: controller.dataList.length,
+      )),
+    );
   }
 
   @override
@@ -32,6 +45,18 @@ class HomePage extends BaseStatefulWidget<HomeController> {
 
   @override
   bool showBackButton() => false;
+
+  ///搜索按钮
+  @override
+  List<Widget>? appBarActionWidget() {
+    return [
+      IconButton(
+          onPressed: () {
+            RouterUtils.toSearchPage();
+          },
+          icon: const Icon(Icons.search))
+    ];
+  }
 }
 
 class HomeController extends BaseRefreshController<ApiService> {

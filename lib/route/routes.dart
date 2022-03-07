@@ -1,67 +1,137 @@
 import 'package:get/get.dart';
 import 'package:open_eye/business/common/photo_preview_page.dart';
+import 'package:open_eye/business/detail_page/detail_page.dart';
 import 'package:open_eye/business/find_page/children_page/category_page.dart';
 import 'package:open_eye/business/find_page/children_page/focus_page.dart';
 import 'package:open_eye/business/find_page/children_page/topic_page.dart';
 import 'package:open_eye/business/find_page/find_page.dart';
 import 'package:open_eye/business/home_page/home_page.dart';
+import 'package:open_eye/business/hot_page/children_page/rank_list_page.dart';
 import 'package:open_eye/business/hot_page/hot_page.dart';
-import 'package:open_eye/business/main_page/main_page.dart';
+import 'package:open_eye/business/main_page.dart';
 import 'package:open_eye/business/mine_page/mine_page.dart';
+import 'package:open_eye/business/seach_page/search_page.dart';
+import 'package:open_eye/business/topic_detail/topic_detail_page.dart';
+import 'package:open_eye/business/type_detail/type_detail_page.dart';
 
 abstract class AppRoutes {
-  static const MAIN_PAGE = "/main_page"; //主页Main
-  static const HOME_PAGE = "/home_page"; //首页Tab
-  static const FIND_PAGE = "/find_page"; //发现Tab
-  static const HOT_PAGE = "/hot_page"; //热门Tab
-  static const MINE_PAGE = "/mine_page"; //我的Tab
-  static const FOCUS_PAGE = "/focus_page"; //关注页面
-  static const CATEGORY_PAGE = "/category_page"; //分类页面
-  static const TOPIC_PAGE = "/topic_page"; //专题页面
-  static const PHOTO_PREVIEW_PAGE = "/photo_preview_page"; //通用图片预览
+  static const mainPage = "/main_page"; //主页Main
+  static const homePage = "/home_page"; //首页Tab
+  static const findPage = "/find_page"; //发现Tab
+  static const hotPage = "/hot_page"; //热门Tab
+  static const minePage = "/mine_page"; //我的Tab
+  static const focusPage = "/focus_page"; //关注页面
+  static const categoryPage = "/category_page"; //分类页面
+  static const topicPage = "/topic_page"; //专题页面
+  static const rankingWeekPage = "/ranking_week_page"; //排行榜页面-星期
+  static const rankingMonthPage = "/ranking_month_page"; //排行榜页面-月
+  static const rankingHistoryPage = "/ranking_history_page"; //排行榜页面-总榜
+  static const searchPage = "/search_page"; //搜索页面
+  static const detailPage = "/detail_page"; //视频详情页面
+  static const typeDetailPage = "/type_detail_page"; //分类详情页面
+  static const topicDetailPage = "/topic_detail_page"; //专题详情页面
+  static const photoPreviewPage = "/photo_preview_page"; //通用图片预览
 
   static final routerPages = [
+    ///主入口
     GetPage(
-        name: AppRoutes.MAIN_PAGE,
+        name: AppRoutes.mainPage,
         page: () => const MainPage(),
         binding: MainBinding()),
 
+    ///首页Tab
     GetPage(
-        name: AppRoutes.HOME_PAGE,
-        page: () => const HomePage(),
-        binding: HomeBinding()),
+      name: AppRoutes.homePage,
+      page: () => const HomePage(),
+      binding: HomeBinding(),
+    ),
 
+    ///热门Tab
     GetPage(
-        name: AppRoutes.HOT_PAGE,
+        name: AppRoutes.hotPage,
         page: () => const HotPage(),
-        binding: HotBinding()),
+        binding: HotBinding(),
+        children: [
+          GetPage(
+              name: AppRoutes.rankingWeekPage,
+              page: () => RankListPage(
+                    rankType: 'weekly',
+                  ),
+              binding: RankListBinding()),
+          GetPage(
+              name: AppRoutes.rankingMonthPage,
+              page: () => RankListPage(
+                    rankType: 'monthly',
+                  ),
+              binding: RankListBinding()),
+          GetPage(
+              name: AppRoutes.rankingHistoryPage,
+              page: () => RankListPage(
+                    rankType: 'historical',
+                  ),
+              binding: RankListBinding()),
+        ]),
 
+    ///发现Tab
     GetPage(
-        name: AppRoutes.FIND_PAGE,
+        name: AppRoutes.findPage,
         page: () => const FindPage(),
         binding: FindBinding(),
         children: [
           GetPage(
-              name: AppRoutes.FOCUS_PAGE,
+              name: AppRoutes.focusPage,
               page: () => const FocusPage(),
               binding: FocusBinding()),
           GetPage(
-              name: AppRoutes.CATEGORY_PAGE,
+              name: AppRoutes.categoryPage,
               page: () => const CategoryPage(),
               binding: CategoryBinding()),
           GetPage(
-              name: AppRoutes.TOPIC_PAGE,
+              name: AppRoutes.topicPage,
               page: () => const TopicPage(),
               binding: TopicBinding())
         ]),
+
+    ///我的Tab
     GetPage(
-        name: AppRoutes.MINE_PAGE,
+        name: AppRoutes.minePage,
         page: () => const MinePage(),
         binding: MineBinding()),
 
+    ///搜索页面
+    GetPage(
+        name: AppRoutes.searchPage,
+        page: () => const SearchPage(),
+        binding: SearchBinding(),
+        transitionDuration: const Duration(milliseconds: 500),
+        transition: Transition.circularReveal),
+
+    ///视频详情
+    GetPage(
+      name: AppRoutes.detailPage,
+      page: () => DetailPage(),
+      binding: DetailBinding(),
+      // transitionDuration: const Duration(milliseconds: 500),
+      // transition: Transition.native
+    ),
+
+    ///分类详情
+    GetPage(
+      name: AppRoutes.typeDetailPage,
+      page: () => const TypeDetailPage(),
+      binding: TypeDetailBinding(),
+    ),
+
+    ///专题详情
+    GetPage(
+      name: AppRoutes.topicDetailPage,
+      page: () => const TopicDetailPage(),
+      binding: TopicDetailBinding(),
+    ),
+
     ///图片预览页面
     GetPage(
-        name: PHOTO_PREVIEW_PAGE,
+        name: photoPreviewPage,
         transition: Transition.zoom,
         page: () => const PhotoPreviewPage(),
         binding: PhotoPreviewBinding())

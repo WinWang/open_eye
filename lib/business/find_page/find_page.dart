@@ -7,11 +7,24 @@ import 'package:open_eye/business/find_page/children_page/category_page.dart';
 import 'package:open_eye/business/find_page/children_page/focus_page.dart';
 import 'package:open_eye/business/find_page/children_page/topic_page.dart';
 import 'package:open_eye/res/colors.dart';
+import 'package:open_eye/route/router_utils.dart';
 import 'package:open_eye/utils/log_utils.dart';
 import 'package:open_eye/widget/keep_alive_wrapper.dart';
 
 class FindPage extends BaseStatefulWidget<FindController> {
   const FindPage({Key? key}) : super(key: key);
+
+  ///搜索按钮
+  @override
+  List<Widget>? appBarActionWidget() {
+    return [
+      IconButton(
+          onPressed: () {
+            RouterUtils.toSearchPage();
+          },
+          icon: const Icon(Icons.search))
+    ];
+  }
 
   @override
   Widget buildContent(BuildContext context) {

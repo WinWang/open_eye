@@ -20,13 +20,13 @@ class BaseNetworkImage extends CachedNetworkImage {
           placeholder: (context, url) {
             return Image.asset(
               "assets/images/back_placeholder.png",
-              // centerSlice: const Rect.fromLTRB(24, 26, 95, 93),
+              // centerSlice: const Rect.fromLTRB(24, 26, 95, 93),  //.9图的效果（有问题，待处理）
             );
           },
           errorWidget: (context, url, error) {
             return Image.asset(
               "assets/images/back_placeholder.png",
-              // centerSlice: const Rect.fromLTRB(24, 26, 95, 93),
+              // centerSlice: const Rect.fromLTRB(24, 26, 95, 93),  //.9图的效果（有问题，待处理）
             );
           },
           fadeInDuration: const Duration(milliseconds: 0),

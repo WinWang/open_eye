@@ -1,6 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:open_eye/business/find_page/model/Topic_data_entity.dart';
-import 'package:open_eye/business/find_page/model/Topic_item_entity.dart';
 
 part 'Topic_entity.g.dart';
 @JsonSerializable(explicitToJson: true)

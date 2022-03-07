@@ -6,6 +6,7 @@ import 'package:open_eye/base/pageWidget/base_stateful_widget.dart';
 import 'package:open_eye/business/find_page/model/Topic_data_entity.dart';
 import 'package:open_eye/business/find_page/model/Topic_entity.dart';
 import 'package:open_eye/http/apiservice/api_service.dart';
+import 'package:open_eye/route/routes.dart';
 import 'package:open_eye/widget/base_network_image.dart';
 import 'package:open_eye/widget/pull_smart_refresher.dart';
 
@@ -18,15 +19,21 @@ class TopicPage extends BaseStatefulWidget<TopicController> {
     return RefreshWidget<TopicController>(
         child: ListView.builder(
       itemBuilder: (context, index) {
-        return Container(
-          padding:
-              EdgeInsets.only(left: 20.w, right: 20.w, top: 10.w, bottom: 10.w),
-          width: double.infinity,
-          height: 400.w,
-          child: BaseNetworkImage(
-            controller.dataList[index].data?.image ?? "",
-            fit: BoxFit.fitWidth,
+        return GestureDetector(
+          child: Container(
+            padding: EdgeInsets.only(
+                left: 20.w, right: 20.w, top: 10.w, bottom: 10.w),
+            width: double.infinity,
+            height: 400.w,
+            child: BaseNetworkImage(
+              controller.dataList[index].data?.image ?? "",
+              fit: BoxFit.fitWidth,
+            ),
           ),
+          onTap: () {
+            var id = controller.dataList[index].data?.id;
+            Get.toNamed(AppRoutes.topicDetailPage, arguments: "$id");
+          },
         );
       },
       itemCount: controller.dataList.length,

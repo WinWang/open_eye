@@ -14,6 +14,6 @@ class RouteAuthMiddleware extends GetMiddleware {
     // Future.delayed(
     //     const Duration(seconds: 1), () => Get.snackbar("提示", "请先登录APP"));
     // return const RouteSettings(name: AppRoutes.TEST_PAGE);
-    return const RouteSettings(name: AppRoutes.MAIN_PAGE);
+    return const RouteSettings(name: AppRoutes.mainPage);
   }
 }

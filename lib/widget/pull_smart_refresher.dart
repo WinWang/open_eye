@@ -18,6 +18,7 @@ enum Refresh {
   down,
 }
 
+// ignore: must_be_immutable
 class RefreshWidget<Controller extends BaseRefreshController>
     extends GetView<Controller> {
   RefreshWidget({
@@ -52,7 +53,7 @@ class RefreshWidget<Controller extends BaseRefreshController>
   ///外部传参RefreshController
   RefreshController? refreshController;
 
-  ///子类，必须是ListView
+  ///子类，必须是ListView-ScrolleView等
   Widget? child;
 
   @override
@@ -73,6 +74,7 @@ class RefreshWidget<Controller extends BaseRefreshController>
               idleText: "下拉可以刷新",
               textStyle: TextStyle(color: ColorStyle.color_000000),
             ),
+            // header: WaterDropHeader(),
             footer: const ClassicFooter(
               loadingText: "正在加载中...",
               idleText: "上拉加载更多",
