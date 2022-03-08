@@ -61,10 +61,7 @@ AppBar createAppBar(
 Widget titleView(String titleString) {
   return Text(
     titleString,
-    style: TextStyle(
-        color: ColorStyle.color_white,
-        fontSize: 34.sp,
-        fontWeight: FontWeight.bold),
+    style: Styles.style_white_32_bold,
   );
 }
 

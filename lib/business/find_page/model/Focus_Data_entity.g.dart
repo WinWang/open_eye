@@ -26,6 +26,9 @@ FocusDataEntity _$FocusDataEntityFromJson(Map<String, dynamic> json) =>
       json['description'] as String?,
       json['playUrl'] as String?,
       json['id'] as int?,
+      json['content'] == null
+          ? null
+          : ItemList.fromJson(json['content'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$FocusDataEntityToJson(FocusDataEntity instance) =>
@@ -40,4 +43,5 @@ Map<String, dynamic> _$FocusDataEntityToJson(FocusDataEntity instance) =>
       'description': instance.description,
       'playUrl': instance.playUrl,
       'id': instance.id,
+      'content': instance.content?.toJson(),
     };

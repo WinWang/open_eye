@@ -35,6 +35,8 @@ class Styles {
       TextStyle(color: ColorStyle.color_6A6969, fontSize: 16.sp);
   static TextStyle style_6A6969_28 =
       TextStyle(color: ColorStyle.color_6A6969, fontSize: 28.sp);
+  static TextStyle style_000000_30 =
+      TextStyle(color: ColorStyle.color_000000, fontSize: 30.sp);
 
   ///---------------------------白色字体区域-------------------------------
   static TextStyle style_white_10 =
@@ -57,6 +59,9 @@ class Styles {
       TextStyle(color: Colors.white24, fontSize: 18.sp);
   static TextStyle style_white_36 =
       TextStyle(color: Colors.white, fontSize: 36.sp);
+
+  static TextStyle style_white_32_bold = TextStyle(
+      color: Colors.white, fontSize: 32.sp, fontWeight: FontWeight.bold);
 
   ///---------------------------黑色字体区域-------------------------------
   static TextStyle style_black_18_bold = TextStyle(
@@ -247,7 +252,6 @@ class DividerStyle {
     endIndent: 20,
     color: ColorStyle.colorShadow2,
   );
-
 
   ///分割线 0.5 - 无边距
   static Widget divider1Half = Divider(

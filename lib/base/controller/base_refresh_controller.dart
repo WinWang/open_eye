@@ -1,4 +1,3 @@
-
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:open_eye/utils/log_utils.dart';
 import 'package:open_eye/widget/pull_smart_refresher.dart';
@@ -39,8 +38,10 @@ abstract class BaseRefreshController<M> extends BaseController<M> {
   void loadNet() {}
 
   ///刷新控件停止刷新方法
-  void hideRefresh(RefreshController refreshController,
-      {bool? finishLoadMore}) {
+  void hideRefresh(
+    RefreshController refreshController, {
+    bool? finishLoadMore,
+  }) {
     if (refreshController.isRefresh) {
       refreshController.refreshCompleted();
     } else if (refreshController.isLoading) {
@@ -48,6 +49,10 @@ abstract class BaseRefreshController<M> extends BaseController<M> {
         refreshController.loadNoData();
       } else {
         refreshController.loadComplete();
+      }
+    } else {
+      if (finishLoadMore ?? false) {
+        refreshController.loadNoData();
       }
     }
   }

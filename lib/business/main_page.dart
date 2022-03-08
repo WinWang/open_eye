@@ -99,9 +99,9 @@ class MainBinding extends Bindings {
     Get.lazyPut(() => HotController());
     Get.lazyPut(() => MineController());
     Get.lazyPut(() => MainController());
-    Get.lazyPut(() => FocusController());
+    Get.lazyPut(() => FocusController(),fenix: true);
     Get.lazyPut(() => CategoryController());
-    Get.lazyPut(() => TopicController());
+    Get.lazyPut(() => TopicController(),fenix: true);
     Get.lazyPut(() => RankListController(), tag: "weekly");
     Get.lazyPut(() => RankListController(), tag: "monthly");
     Get.lazyPut(() => RankListController(), tag: "historical");

@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:open_eye/base/controller/base_controller.dart';
+import 'package:open_eye/utils/log_utils.dart';
 import 'package:open_eye/widget/load_state_widget.dart';
 import 'package:open_eye/widget/loading_widget.dart';
 
@@ -11,7 +14,10 @@ abstract class BaseStatefulWidget<T extends BaseController>
 
   final String? tag = null;
 
-  T get controller => GetInstance().find<T>(tag: tag);
+  T get controller {
+    LogD("测试代码》》》${GetInstance().find<T>(tag: tag)}$tag");
+    return GetInstance().find<T>(tag: tag);
+  }
 
   ///Get 局部更新字段
   get updateId => null;
@@ -94,7 +100,8 @@ class AutoDisposeState<T extends GetxController>
 
   @override
   void dispose() {
-    Get.delete<T>();
+    LogE(">>>>>>>>>>>销毁》》》》${widget.tag}");
+    Get.delete<T>(tag: widget.tag);
     super.dispose();
   }
 

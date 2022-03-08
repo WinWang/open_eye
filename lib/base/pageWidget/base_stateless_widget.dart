@@ -13,13 +13,20 @@ abstract class BaseStatelessWidget<T extends BaseController> extends GetView<T>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: showTitleBar()
-          ? createAppBar(titleString(), showBackButton(), appBarActionWidget(),
-              titleWidget: titleWidget())
-          : null,
+      appBar: _createAppBar(),
       body: _buildBody(context),
       drawer: showDrawer() ? createDrawer() : null,
     );
+  }
+
+  ///AppBar生成逻辑
+  AppBar? _createAppBar() {
+    if (showTitleBar()) {
+      return createAppBar(titleString(), showBackButton(), appBarActionWidget(),
+          titleWidget: titleWidget());
+    } else {
+      return null;
+    }
   }
 
   ///构建侧边栏内容

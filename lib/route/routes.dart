@@ -80,15 +80,15 @@ abstract class AppRoutes {
         children: [
           GetPage(
               name: AppRoutes.focusPage,
-              page: () => const FocusPage(),
+              page: () =>  FocusPage(),
               binding: FocusBinding()),
           GetPage(
               name: AppRoutes.categoryPage,
-              page: () => const CategoryPage(),
+              page: () =>  CategoryPage(),
               binding: CategoryBinding()),
           GetPage(
               name: AppRoutes.topicPage,
-              page: () => const TopicPage(),
+              page: () =>  TopicPage(),
               binding: TopicBinding())
         ]),
 

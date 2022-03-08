@@ -33,7 +33,7 @@ class RankListPage extends BaseStatefulWidget<RankListController> {
   Widget buildContent(BuildContext context) {
     return RefreshWidget<RankListController>(
         controllerTag: rankType,
-        enablePullUp: false,
+        // enablePullUp: false,
         refreshController: controller.refreshControllers[rankType],
         child: ListView.builder(
             itemBuilder: (context, index) {
@@ -78,7 +78,7 @@ class RankListController extends BaseRefreshController<ApiService> {
       if (itemList != null && itemList.isNotEmpty) {
         dataList.addAll(itemList);
       }
-      hideRefresh(refreshControllers[rankType]!);
+      hideRefresh(refreshControllers[rankType]!, finishLoadMore: true);
     });
   }
 }

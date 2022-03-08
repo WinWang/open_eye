@@ -19,6 +19,7 @@ class FocusDataEntity {
   String? description;
   String? playUrl;
   int? id;
+  ItemList? content;
 
   FocusDataEntity(
       this.header,
@@ -30,7 +31,8 @@ class FocusDataEntity {
       this.title,
       this.description,
       this.playUrl,
-      this.id);
+      this.id,
+      this.content);
 
   factory FocusDataEntity.fromJson(Map<String, dynamic> json) =>
       _$FocusDataEntityFromJson(json);

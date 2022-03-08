@@ -15,6 +15,7 @@ abstract class BaseController<M> extends SuperController with ToastMixin {
   late M api;
   late EventBus eventBus;
   List<StreamSubscription>? _stremSubList;
+  RxString barTitleString = "标题".obs;
 
   @override
   void onInit() {

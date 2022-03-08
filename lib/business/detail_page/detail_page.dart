@@ -14,6 +14,7 @@ import 'package:open_eye/widget/fijkplayer_skin/fijkplayer_skin.dart';
 import 'package:open_eye/widget/fijkplayer_skin/video_config.dart';
 
 ///视频详情页面
+// ignore: must_be_immutable
 class DetailPage extends BaseStatelessWidget<DetailController> {
   DetailPage({Key? key}) : super(key: key);
 
@@ -31,34 +32,37 @@ class DetailPage extends BaseStatelessWidget<DetailController> {
           player: controller.player,
           height: videoPlayHeight,
           fit: FijkFit.cover,
-          panelBuilder: (FijkPlayer player, FijkData data,
-              BuildContext context, Size viewSize, Rect texturePos) {
-            return CustomFijkPanel(
-              player: player,
-              viewSize: viewSize,
-              texturePos: texturePos,
-              playerTitle: controller.title.value,
-              showConfig: controller.videoConfig,
-              curPlayUrl: '',
-              pageContent: context,
-            );
+          panelBuilder: (FijkPlayer player, FijkData data, BuildContext context,
+              Size viewSize, Rect texturePos) {
+            return Obx(() => CustomFijkPanel(
+                  player: player,
+                  viewSize: viewSize,
+                  texturePos: texturePos,
+                  playerTitle: controller.title.value,
+                  showConfig: controller.videoConfig,
+                  curPlayUrl: '',
+                  pageContent: context,
+                ));
           },
         ),
         Expanded(
             child: ListView.builder(
           itemBuilder: (BuildContext context, int index) {
-            return ItemVideoDetailWidget(controller.dataList[index]);
+            return GestureDetector(
+              child: ItemVideoDetailWidget(controller.dataList[index]),
+              onTap: () async {
+                var playUrl = controller.dataList[index].data?.playUrl ?? "";
+                var title = controller.dataList[index].data?.title ?? "";
+                controller.title.value = title;
+                controller.player.setDataSource(playUrl, autoPlay: true);
+              },
+            );
           },
           itemCount: controller.dataList.length,
         ))
       ],
     );
   }
-
-  // @override
-  // bool useLoadSir() {
-  //   return false;
-  // }
 
   @override
   bool showTitleBar() {

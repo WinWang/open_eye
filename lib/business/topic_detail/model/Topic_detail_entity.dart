@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:open_eye/business/find_page/model/ItemList.dart';
+import 'package:open_eye/business/topic_detail/model/Topic_ItemList.dart';
 
 part 'Topic_detail_entity.g.dart';
 
@@ -20,7 +20,7 @@ class TopicDetailEntity {
   String? text;
   String? shareLink;
   int? count;
-  ItemList? itemList;
+  List<TopicItemList>? itemList;
 
   factory TopicDetailEntity.fromJson(Map<String, dynamic> json) =>
       _$TopicDetailEntityFromJson(json);

@@ -85,11 +85,7 @@ class FindController extends BaseController with GetTickerProviderStateMixin {
   final List<String> tabList = ["关注", "分类", "专题"];
   late TabController tabController;
   final PageController pagerController = PageController();
-  final List<Widget> pagerList = [
-    const FocusPage(),
-    const CategoryPage(),
-    const TopicPage()
-  ];
+  final List<Widget> pagerList = [FocusPage(), CategoryPage(), TopicPage()];
 
   @override
   void loadNet() {}

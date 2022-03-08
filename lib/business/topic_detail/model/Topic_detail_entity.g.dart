@@ -14,8 +14,9 @@ TopicDetailEntity _$TopicDetailEntityFromJson(Map<String, dynamic> json) =>
       text: json['text'] as String?,
       shareLink: json['shareLink'] as String?,
       count: json['count'] as int?,
-      itemList:
-          json['itemList'] == null ? null : ItemList.fromJson(json['itemList']),
+      itemList: (json['itemList'] as List<dynamic>?)
+          ?.map((e) => TopicItemList.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$TopicDetailEntityToJson(TopicDetailEntity instance) =>
@@ -26,5 +27,5 @@ Map<String, dynamic> _$TopicDetailEntityToJson(TopicDetailEntity instance) =>
       'text': instance.text,
       'shareLink': instance.shareLink,
       'count': instance.count,
-      'itemList': instance.itemList?.toJson(),
+      'itemList': instance.itemList?.map((e) => e.toJson()).toList(),
     };

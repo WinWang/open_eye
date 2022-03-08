@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:open_eye/business/topic_detail/widget/Topic_detail_entity.dart';
+import 'package:open_eye/business/topic_detail/model/Topic_detail_entity.dart';
 import 'package:open_eye/business/find_page/model/Focus_Entity.dart';
 import 'package:open_eye/business/find_page/model/Topic_entity.dart';
 import 'package:open_eye/business/find_page/model/Type_entity.dart';
