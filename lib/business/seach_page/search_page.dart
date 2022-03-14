@@ -8,6 +8,7 @@ import 'package:open_eye/business/find_page/model/Focus_Item_Entity.dart';
 import 'package:open_eye/business/hot_page/widget/item_rank_widget.dart';
 import 'package:open_eye/http/apiservice/api_service.dart';
 import 'package:open_eye/res/colors.dart';
+import 'package:open_eye/utils/keyboard_util.dart';
 
 ///搜索页面
 class SearchPage extends BaseStatelessWidget<SearchController> {
@@ -56,7 +57,7 @@ class SearchPage extends BaseStatelessWidget<SearchController> {
 
   ///搜索按钮
   @override
-  List<Widget>? appBarActionWidget() {
+  List<Widget>? appBarActionWidget(BuildContext context) {
     return [
       IconButton(
           onPressed: () {
@@ -64,6 +65,7 @@ class SearchPage extends BaseStatelessWidget<SearchController> {
               showToast("请输入搜索内容");
               return;
             }
+            KeyboardUtils.hideKeyboard(context);
             controller.doSearch(showDialog: true);
           },
           icon: const Icon(Icons.search))

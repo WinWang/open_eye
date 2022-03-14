@@ -48,7 +48,7 @@ class HomePage extends BaseStatefulWidget<HomeController> {
 
   ///搜索按钮
   @override
-  List<Widget>? appBarActionWidget() {
+  List<Widget>? appBarActionWidget(BuildContext context) {
     return [
       IconButton(
           onPressed: () {

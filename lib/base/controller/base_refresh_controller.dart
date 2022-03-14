@@ -26,7 +26,6 @@ abstract class BaseRefreshController<M> extends BaseController<M> {
 
   ///预留下拉加载
   onLoadMore() {
-    LogD("msg<><><><><><><><><><><><><><><>");
     ++pageIndex;
     requestPageData(refresh: Refresh.down);
   }
@@ -43,14 +42,17 @@ abstract class BaseRefreshController<M> extends BaseController<M> {
     bool? finishLoadMore,
   }) {
     if (refreshController.isRefresh) {
+      LogWTF(">>>>>>>>>结束刷新");
       refreshController.refreshCompleted();
     } else if (refreshController.isLoading) {
+      LogWTF(">>>>>>>>>结束加载");
       if (finishLoadMore ?? false) {
         refreshController.loadNoData();
       } else {
         refreshController.loadComplete();
       }
     } else {
+      LogWTF(">>>>>>>>>结束WTF");
       if (finishLoadMore ?? false) {
         refreshController.loadNoData();
       }

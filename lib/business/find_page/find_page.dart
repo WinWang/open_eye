@@ -9,14 +9,13 @@ import 'package:open_eye/business/find_page/children_page/topic_page.dart';
 import 'package:open_eye/res/colors.dart';
 import 'package:open_eye/route/router_utils.dart';
 import 'package:open_eye/utils/log_utils.dart';
-import 'package:open_eye/widget/keep_alive_wrapper.dart';
 
 class FindPage extends BaseStatefulWidget<FindController> {
   const FindPage({Key? key}) : super(key: key);
 
   ///搜索按钮
   @override
-  List<Widget>? appBarActionWidget() {
+  List<Widget>? appBarActionWidget(BuildContext context) {
     return [
       IconButton(
           onPressed: () {
@@ -33,14 +32,12 @@ class FindPage extends BaseStatefulWidget<FindController> {
         _createTabBar(),
         Expanded(
           flex: 1,
-          child: KeepAliveWrapper(
-            child: PageView(
-              controller: controller.pagerController,
-              children: controller.pagerList,
-              onPageChanged: (index) {
-                controller.tabController.index = index;
-              },
-            ),
+          child: PageView(
+            controller: controller.pagerController,
+            children: controller.pagerList,
+            onPageChanged: (index) {
+              controller.tabController.index = index;
+            },
           ),
         )
       ],
@@ -85,7 +82,17 @@ class FindController extends BaseController with GetTickerProviderStateMixin {
   final List<String> tabList = ["关注", "分类", "专题"];
   late TabController tabController;
   final PageController pagerController = PageController();
-  final List<Widget> pagerList = [FocusPage(), CategoryPage(), TopicPage()];
+  final List<Widget> pagerList = [
+    FocusPage(
+      tagType: "home",
+    ),
+    CategoryPage(
+      tagType: "home",
+    ),
+    TopicPage(
+      tagType: "home",
+    )
+  ];
 
   @override
   void loadNet() {}
@@ -102,9 +109,9 @@ class FindController extends BaseController with GetTickerProviderStateMixin {
 class FindBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => FindController());
-    Get.lazyPut(() => FocusController());
-    Get.lazyPut(() => CategoryController());
-    Get.lazyPut(() => TopicController());
+    // Get.lazyPut(() => FindController());
+    // Get.lazyPut(() => FocusController());
+    // Get.lazyPut(() => CategoryController());
+    // Get.lazyPut(() => TopicController());
   }
 }

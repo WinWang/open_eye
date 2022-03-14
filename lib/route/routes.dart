@@ -49,26 +49,21 @@ abstract class AppRoutes {
     ///热门Tab
     GetPage(
         name: AppRoutes.hotPage,
-        page: () => const HotPage(),
+        page: () => HotPage(tagType: "route"),
         binding: HotBinding(),
         children: [
           GetPage(
               name: AppRoutes.rankingWeekPage,
-              page: () => RankListPage(
-                    rankType: 'weekly',
-                  ),
+              page: () => RankListPage(rankType: 'weekly', tagType: "route"),
               binding: RankListBinding()),
           GetPage(
               name: AppRoutes.rankingMonthPage,
-              page: () => RankListPage(
-                    rankType: 'monthly',
-                  ),
+              page: () => RankListPage(rankType: 'monthly', tagType: "route"),
               binding: RankListBinding()),
           GetPage(
               name: AppRoutes.rankingHistoryPage,
-              page: () => RankListPage(
-                    rankType: 'historical',
-                  ),
+              page: () =>
+                  RankListPage(rankType: 'historical', tagType: "route"),
               binding: RankListBinding()),
         ]),
 
@@ -79,17 +74,20 @@ abstract class AppRoutes {
         binding: FindBinding(),
         children: [
           GetPage(
-              name: AppRoutes.focusPage,
-              page: () =>  FocusPage(),
-              binding: FocusBinding()),
+            name: AppRoutes.focusPage,
+            page: () => FocusPage(tagType: "route"),
+            binding: FocusBinding()
+          ),
           GetPage(
-              name: AppRoutes.categoryPage,
-              page: () =>  CategoryPage(),
-              binding: CategoryBinding()),
+            name: AppRoutes.categoryPage,
+            page: () => CategoryPage(tagType: "route"),
+            binding: CategoryBinding()
+          ),
           GetPage(
-              name: AppRoutes.topicPage,
-              page: () =>  TopicPage(),
-              binding: TopicBinding())
+            name: AppRoutes.topicPage,
+            page: () => TopicPage(tagType: "route"),
+            binding: TopicBinding()
+          )
         ]),
 
     ///我的Tab

@@ -9,8 +9,14 @@ import 'package:open_eye/route/router_utils.dart';
 import 'package:open_eye/utils/log_utils.dart';
 import 'package:open_eye/widget/keep_alive_wrapper.dart';
 
+// ignore: must_be_immutable
 class HotPage extends BaseStatefulWidget<HotController> {
-  const HotPage({Key? key}) : super(key: key);
+  String tagType;
+
+  HotPage({Key? key, required this.tagType}) : super(key: key);
+
+  @override
+  String? get tag => tagType;
 
   @override
   Widget buildContent(BuildContext context) {
@@ -21,7 +27,9 @@ class HotPage extends BaseStatefulWidget<HotController> {
             child: KeepAliveWrapper(
           child: PageView(
             controller: controller.pagerController,
-            children: controller.pagerList,
+            children: tagType == "home"
+                ? controller.pagerList
+                : controller.pagerListRoute,
             onPageChanged: (index) {
               controller.tabController.index = index;
             },
@@ -38,7 +46,7 @@ class HotPage extends BaseStatefulWidget<HotController> {
 
   ///搜索按钮
   @override
-  List<Widget>? appBarActionWidget() {
+  List<Widget>? appBarActionWidget(BuildContext context) {
     return [
       IconButton(
           onPressed: () {
@@ -86,9 +94,15 @@ class HotController extends BaseController with GetTickerProviderStateMixin {
       TabController(length: tabList.length, vsync: this);
   final PageController pagerController = PageController();
   final List<Widget> pagerList = [
-    RankListPage(rankType: "weekly"),
-    RankListPage(rankType: "monthly"),
-    RankListPage(rankType: "historical"),
+    RankListPage(rankType: "weekly", tagType: "home"),
+    RankListPage(rankType: "monthly", tagType: "home"),
+    RankListPage(rankType: "historical", tagType: "home"),
+  ];
+
+  final List<Widget> pagerListRoute = [
+    RankListPage(rankType: "weekly", tagType: "route"),
+    RankListPage(rankType: "monthly", tagType: "route"),
+    RankListPage(rankType: "historical", tagType: "route"),
   ];
 
   @override
@@ -104,9 +118,9 @@ class HotController extends BaseController with GetTickerProviderStateMixin {
 class HotBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => HotController());
-    Get.lazyPut(() => RankListController(), tag: "weekly");
-    Get.lazyPut(() => RankListController(), tag: "monthly");
-    Get.lazyPut(() => RankListController(), tag: "historical");
+    Get.lazyPut(() => HotController(), tag: "route");
+    Get.lazyPut(() => RankListController(), tag: "route_weekly");
+    Get.lazyPut(() => RankListController(), tag: "route_monthly");
+    Get.lazyPut(() => RankListController(), tag: "route_historical");
   }
 }

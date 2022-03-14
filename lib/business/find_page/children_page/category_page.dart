@@ -1,20 +1,26 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:open_eye/base/controller/base_controller.dart';
-import 'package:open_eye/base/pageWidget/base_stateful_widget.dart';
+import 'package:open_eye/base/pageWidget/base_stateless_widget.dart';
 import 'package:open_eye/business/find_page/model/Type_entity.dart';
 import 'package:open_eye/business/find_page/widget/item_category_widget.dart';
 import 'package:open_eye/http/apiservice/api_service.dart';
+import 'package:open_eye/route/router_utils.dart';
 import 'package:open_eye/route/routes.dart';
-import 'package:open_eye/utils/log_utils.dart';
 
 ///分类页面
-class CategoryPage extends BaseStatefulWidget<CategoryController> {
-  CategoryPage({Key? key}) : super(key: key);
+// ignore: must_be_immutable
+class CategoryPage extends BaseStatelessWidget<CategoryController> {
+  String tagType;
+
+  CategoryPage({Key? key, required this.tagType}) : super(key: key);
 
   @override
-  String? get tag => Get.parameters["tag"];
+  String? get tag {
+    return tagType;
+  }
 
   @override
   Widget buildContent(BuildContext context) {
@@ -47,12 +53,24 @@ class CategoryPage extends BaseStatefulWidget<CategoryController> {
 
   @override
   bool showTitleBar() {
-    return tag != null;
+    return tagType == "route";
   }
 
   @override
   String titleString() {
     return "分类";
+  }
+
+  ///搜索按钮
+  @override
+  List<Widget>? appBarActionWidget(BuildContext context) {
+    return [
+      IconButton(
+          onPressed: () {
+            RouterUtils.toSearchPage();
+          },
+          icon: const Icon(Icons.search))
+    ];
   }
 }
 
@@ -77,17 +95,12 @@ class CategoryController extends BaseController<ApiService> {
       }
     });
   }
-
-  @override
-  void onClose() {
-    super.onClose();
-    LogD("销毁》》》》Type分类");
-  }
 }
 
 class CategoryBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => CategoryController(), tag: "type");
+    // Get.put(() => CategoryController(), tag: "type", permanent: true);
+    Get.lazyPut(() => CategoryController(), tag: "route");
   }
 }

@@ -16,33 +16,33 @@ class CommonDialog extends StatelessWidget {
   String content = '';
 
   ///左侧文字
-  String backText = '';
+  String negaText = '';
 
   ///右侧文字
-  String nextText = '';
+  String posiText = '';
 
   ///左侧事件
-  VoidCallback? backTap;
+  VoidCallback? negaTap;
 
   ///右侧事件
-  VoidCallback? nextTap;
+  VoidCallback? posiTap;
 
   ///左侧是否隐藏
-  bool backVisible = true;
+  bool negaVisible = true;
 
   ///右侧是否隐藏
-  bool nextVisible = true;
+  bool posiVisible = true;
 
   CommonDialog({
     Key? key,
     this.title = '',
     this.content = '',
-    this.backText = '',
-    this.nextText = '',
-    this.backVisible = true,
-    this.nextVisible = true,
-    this.backTap,
-    this.nextTap,
+    this.negaText = '',
+    this.posiText = '',
+    this.negaVisible = true,
+    this.posiVisible = true,
+    this.negaTap,
+    this.posiTap,
   }) : super(key: key);
 
   @override
@@ -103,8 +103,8 @@ class CommonDialog extends StatelessWidget {
                               children: [
                                 ///对半分
                                 _buildTextButton(
-                                    backTap, backText, backVisible),
-                                _buildTextButton(nextTap, nextText, nextVisible)
+                                    negaTap, negaText, negaVisible),
+                                _buildTextButton(posiTap, posiText, posiVisible)
                               ],
                             )
                           ],

@@ -28,12 +28,12 @@ extension GetExtension on GetInterface {
   showCommonDialog({
     String title = '',
     String content = '',
-    String backText = '',
-    String nextText = '',
-    bool backVisible = true,
-    bool nextVisible = true,
-    VoidCallback? backTap,
-    VoidCallback? nextTap,
+    String negaText = '',
+    String posiText = '',
+    bool negaVisible = true,
+    bool posiVisible = true,
+    VoidCallback? negaTap,
+    VoidCallback? posiTap,
     backKey = false,
   }) {
     if (Get.isDialogOpen != null && Get.isDialogOpen!) {
@@ -43,12 +43,12 @@ extension GetExtension on GetInterface {
         CommonDialog(
           title: title,
           content: content,
-          backText: backText.isEmpty ? StringStyles.quit : backText,
-          nextText: nextText.isEmpty ? StringStyles.enter : nextText,
-          backVisible: backVisible,
-          nextVisible: nextVisible,
-          backTap: backTap,
-          nextTap: nextTap,
+          negaText: negaText.isEmpty ? StringStyles.quit : negaText,
+          posiText: posiText.isEmpty ? StringStyles.enter : posiText,
+          negaVisible: negaVisible,
+          posiVisible: posiVisible,
+          negaTap: negaTap,
+          posiTap: posiTap,
         ),
         transitionDuration: const Duration(milliseconds: 500),
         barrierDismissible: backKey);

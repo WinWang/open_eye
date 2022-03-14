@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:open_eye/base/controller/base_controller.dart';
-import 'package:open_eye/base/pageWidget/base_stateless_widget.dart';
+import 'package:open_eye/base/pageWidget/base_stateful_widget.dart';
 import 'package:open_eye/business/find_page/children_page/category_page.dart';
 import 'package:open_eye/business/find_page/children_page/focus_page.dart';
 import 'package:open_eye/business/find_page/children_page/topic_page.dart';
@@ -12,9 +12,10 @@ import 'package:open_eye/business/hot_page/children_page/rank_list_page.dart';
 import 'package:open_eye/business/hot_page/hot_page.dart';
 import 'package:open_eye/business/mine_page/mine_page.dart';
 import 'package:open_eye/res/colors.dart';
+import 'package:open_eye/utils/log_utils.dart';
 import 'package:open_eye/widget/keep_alive_wrapper.dart';
 
-class MainPage extends BaseStatelessWidget<MainController> {
+class MainPage extends BaseStatefulWidget<MainController> {
   const MainPage({Key? key}) : super(key: key);
 
   @override
@@ -77,7 +78,9 @@ class MainController extends BaseController {
   final List<Widget> naviItems = [
     const HomePage(),
     const FindPage(),
-    const HotPage(),
+    HotPage(
+      tagType: "home",
+    ),
     const MinePage()
   ];
 
@@ -94,16 +97,17 @@ class MainController extends BaseController {
 class MainBinding extends Bindings {
   @override
   void dependencies() {
+    LogD(">>>>>>>>>>>>开始注入代码");
     Get.lazyPut(() => HomeController());
     Get.lazyPut(() => FindController());
-    Get.lazyPut(() => HotController());
+    Get.lazyPut(() => HotController(), tag: "home");
     Get.lazyPut(() => MineController());
     Get.lazyPut(() => MainController());
-    Get.lazyPut(() => FocusController(),fenix: true);
-    Get.lazyPut(() => CategoryController());
-    Get.lazyPut(() => TopicController(),fenix: true);
-    Get.lazyPut(() => RankListController(), tag: "weekly");
-    Get.lazyPut(() => RankListController(), tag: "monthly");
-    Get.lazyPut(() => RankListController(), tag: "historical");
+    Get.lazyPut(() => FocusController(), tag: "home");
+    Get.lazyPut(() => CategoryController(), tag: "home");
+    Get.lazyPut(() => TopicController(), tag: "home");
+    Get.lazyPut(() => RankListController(), tag: "home_weekly");
+    Get.lazyPut(() => RankListController(), tag: "home_monthly");
+    Get.lazyPut(() => RankListController(), tag: "home_historical");
   }
 }

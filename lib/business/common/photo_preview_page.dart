@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:open_eye/base/controller/base_controller.dart';
@@ -28,7 +29,8 @@ class PhotoPreviewPage extends BaseStatelessWidget<PhotoPreviewController> {
   Widget _createImageProvider() {
     if (controller.imageUrl.value.isNotEmpty) {
       return Obx(() => PhotoView(
-            imageProvider: NetworkImage(controller.imageUrl.value),
+            imageProvider:
+                CachedNetworkImageProvider(controller.imageUrl.value),
           ));
     } else {
       return const SizedBox();
