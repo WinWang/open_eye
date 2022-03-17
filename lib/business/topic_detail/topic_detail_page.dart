@@ -1,3 +1,4 @@
+import 'package:fijkplayer/fijkplayer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -13,6 +14,7 @@ import 'package:open_eye/business/topic_detail/widget/item_topic_detail_widget.d
 import 'package:open_eye/http/apiservice/api_service.dart';
 import 'package:open_eye/res/colors.dart';
 import 'package:open_eye/res/style.dart';
+import 'package:open_eye/utils/log_utils.dart';
 import 'package:open_eye/widget/base_network_image.dart';
 
 import 'model/Topic_ItemList.dart';
@@ -31,7 +33,14 @@ class TopicDetailPage extends BaseStatelessWidget<TopicDetailController> {
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemBuilder: (context, index) {
-                return ItemTopicDetailWidget(controller.dataList[index]);
+                return Obx(() => ItemTopicDetailWidget(
+                        controller.dataList[index],
+                        controller.player,
+                        index,
+                        controller.playingIndex, (itemHeight) {
+                      var height = MediaQuery.of(context).size.height;
+                      LogD("Height>>>>>>>>>>>$itemHeight>>>>>>>>>>$height");
+                    }));
               },
               itemCount: controller.dataList.length)
         ],
@@ -97,6 +106,8 @@ class TopicDetailPage extends BaseStatelessWidget<TopicDetailController> {
 }
 
 class TopicDetailController extends BaseController<ApiService> {
+  final FijkPlayer player = FijkPlayer();
+  RxInt playingIndex = (-1).obs;
   String id = Get.parameters["id"] ?? "";
   RxString title = "".obs;
   RxString headImg = "".obs;
@@ -107,7 +118,18 @@ class TopicDetailController extends BaseController<ApiService> {
   @override
   void onReady() {
     super.onReady();
+    player.addListener(_playerStateChanged);
     loadNet();
+  }
+
+  void _playerStateChanged() {
+    FijkValue value = player.value;
+    // LogWTF("播放器状态>>>>>>>>>$value");
+    bool hasStoped =
+        (value.state == FijkState.completed || value.state == FijkState.error);
+    if (hasStoped) {
+      playingIndex.value = -1;
+    }
   }
 
   @override
@@ -124,6 +146,13 @@ class TopicDetailController extends BaseController<ApiService> {
       headDesc.value = value.text ?? "";
       title.value = value.brief ?? "";
     });
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+    player.removeListener(_playerStateChanged);
+    player.release();
   }
 }
 

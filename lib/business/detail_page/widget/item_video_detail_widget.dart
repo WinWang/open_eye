@@ -6,14 +6,22 @@ import 'package:open_eye/business/find_page/model/Focus_Item_Entity.dart';
 import 'package:open_eye/res/colors.dart';
 import 'package:open_eye/res/style.dart';
 
+// ignore: must_be_immutable
 class ItemVideoDetailWidget extends CommonStatelessWidget {
   FocusItemEntity itemData;
 
-  ItemVideoDetailWidget(this.itemData, {Key? key}) : super(key: key);
+  int selectIndex;
+
+  int itemIndex;
+
+  ItemVideoDetailWidget(this.itemData, this.selectIndex, this.itemIndex,
+      {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: ColorStyle.color_white,
       padding: EdgeInsets.only(left: 20.w, right: 20.w),
       height: 180.w,
       child: Row(
@@ -31,8 +39,9 @@ class ItemVideoDetailWidget extends CommonStatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(10.w)),
                 image: DecorationImage(
                     image: CachedNetworkImageProvider(
-                  itemData.data?.cover?.feed ?? "",
-                ),fit: BoxFit.cover)),
+                      itemData.data?.cover?.feed ?? "",
+                    ),
+                    fit: BoxFit.cover)),
           ),
           Box.wBox16,
           Expanded(
@@ -41,8 +50,11 @@ class ItemVideoDetailWidget extends CommonStatelessWidget {
             children: [
               Text(
                 itemData.data?.title ?? "",
-                style:
-                    TextStyle(color: ColorStyle.color_333333, fontSize: 28.w),
+                style: TextStyle(
+                    color: selectIndex == itemIndex
+                        ? ColorStyle.color_EA4C43
+                        : ColorStyle.color_333333,
+                    fontSize: 28.w),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
               ),
@@ -50,7 +62,9 @@ class ItemVideoDetailWidget extends CommonStatelessWidget {
               Text(
                 itemData.data?.description ?? "",
                 style:
-                    TextStyle(color: ColorStyle.color_999999, fontSize: 24.w),
+                    TextStyle(color: selectIndex == itemIndex
+                        ? ColorStyle.color_EA4C43
+                        : ColorStyle.color_999999, fontSize: 24.w),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
               )

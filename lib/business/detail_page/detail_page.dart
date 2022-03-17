@@ -16,9 +16,7 @@ import 'package:open_eye/widget/fijkplayer_skin/video_config.dart';
 ///视频详情页面
 // ignore: must_be_immutable
 class DetailPage extends BaseStatelessWidget<DetailController> {
-  DetailPage({Key? key}) : super(key: key);
-
-  var videoPlayHeight = 450.w;
+  const DetailPage({Key? key}) : super(key: key);
 
   @override
   Widget buildContent(BuildContext context) {
@@ -28,38 +26,58 @@ class DetailPage extends BaseStatelessWidget<DetailController> {
           height: MediaQueryData.fromWindow(window).padding.top,
           color: ColorStyle.color_black,
         ),
-        FijkView(
-          player: controller.player,
-          height: videoPlayHeight,
-          fit: FijkFit.cover,
-          panelBuilder: (FijkPlayer player, FijkData data, BuildContext context,
-              Size viewSize, Rect texturePos) {
-            return Obx(() => CustomFijkPanel(
-                  player: player,
-                  viewSize: viewSize,
-                  texturePos: texturePos,
-                  playerTitle: controller.title.value,
-                  showConfig: controller.videoConfig,
-                  curPlayUrl: '',
-                  pageContent: context,
-                ));
-          },
+        Container(
+          height: 450.w,
+          color: ColorStyle.color_black,
+          child: FijkView(
+            player: controller.player,
+            height: 450.w,
+            color: ColorStyle.color_black,
+            fit: FijkFit.cover,
+            panelBuilder: (FijkPlayer player, FijkData data,
+                BuildContext context, Size viewSize, Rect texturePos) {
+              return Obx(() => CustomFijkPanel(
+                    player: player,
+                    viewSize: viewSize,
+                    texturePos: texturePos,
+                    playerTitle: controller.title.value,
+                    showConfig: controller.videoConfig,
+                    curPlayUrl: '',
+                    pageContent: context,
+                  ));
+            },
+          ),
         ),
         Expanded(
-            child: ListView.builder(
-          itemBuilder: (BuildContext context, int index) {
-            return GestureDetector(
-              child: ItemVideoDetailWidget(controller.dataList[index]),
-              onTap: () async {
-                var playUrl = controller.dataList[index].data?.playUrl ?? "";
-                var title = controller.dataList[index].data?.title ?? "";
-                controller.title.value = title;
-                controller.player.setDataSource(playUrl, autoPlay: true);
-              },
-            );
-          },
-          itemCount: controller.dataList.length,
-        ))
+            child: MediaQuery.removePadding(
+                removeTop: true,
+                context: context,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Obx(() => GestureDetector(
+                          child: ItemVideoDetailWidget(
+                              controller.dataList[index],
+                              controller.selectIndex.value,
+                              index),
+                          onTap: () async {
+                            if (index == controller.selectIndex.value) {
+                              return;
+                            }
+                            var playUrl =
+                                controller.dataList[index].data?.playUrl ?? "";
+                            var title =
+                                controller.dataList[index].data?.title ?? "";
+                            controller.title.value = title;
+                            controller.selectIndex.value = index;
+                            await controller.player.reset();
+                            controller.player
+                                .setDataSource(playUrl, autoPlay: true);
+                          },
+                        ));
+                  },
+                  itemCount: controller.dataList.length,
+                )))
       ],
     );
   }
@@ -78,6 +96,7 @@ class DetailController extends BaseController<ApiService> {
   RxString coverUrl = (Get.parameters["coverUrl"] ?? "").obs;
   RxString title = (Get.parameters["title"] ?? "").obs;
   RxList<FocusItemEntity> dataList = <FocusItemEntity>[].obs;
+  RxInt selectIndex = (-1).obs;
 
   @override
   void onReady() {

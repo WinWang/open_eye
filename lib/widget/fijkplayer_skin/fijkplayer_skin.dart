@@ -1145,7 +1145,7 @@ class BuildGestureDetectorState extends State<BuildGestureDetector> {
               child: Text(
                 mapKey + " X",
                 style: TextStyle(
-                  color: _speed == speedVals ? Colors.blue : Colors.white,
+                  color: _speed == speedVals ? ColorStyle.color_EA4C43 : Colors.white,
                   fontSize: 16,
                 ),
               ),

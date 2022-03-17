@@ -93,6 +93,9 @@ dependencies:
   card_swiper: ^1.0.4
   #  播放器
   fijkplayer: ^0.10.1
+  #Widget是否可见判断
+  visibility_detector: ^0.2.2
+
 
 dev_dependencies:
   flutter_test:

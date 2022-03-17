@@ -107,7 +107,7 @@ abstract class AppRoutes {
     ///视频详情
     GetPage(
       name: AppRoutes.detailPage,
-      page: () => DetailPage(),
+      page: () => const DetailPage(),
       binding: DetailBinding(),
       // transitionDuration: const Duration(milliseconds: 500),
       // transition: Transition.native
