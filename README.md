@@ -2,6 +2,8 @@
 
 开眼APP：整体项目架构基于Getx搭建，完成路由，依赖注入；网络请求框架基于Retrofit+Dio实现，配合官方JsonSerialize实现解析；封装项目页面多状态（加载中，成功，失败，空数据）；封装列表页面下拉刷新+上拉加载更多等，具体更多内容，请下载项目了解更多
 
+<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/demo.gif" width="400px">
+
 <img src="https://github.com/WinWang/open_eye/blob/master/screenshot/1.png" width="400px">
 
 <img src="https://github.com/WinWang/open_eye/blob/master/screenshot/2.png" width="400px">
