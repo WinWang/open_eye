@@ -1,12 +1,16 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:open_eye/base/controller/base_controller.dart';
 import 'package:open_eye/base/pageWidget/base_stateless_widget.dart';
+import 'package:open_eye/business/test_page/test_page.dart';
 import 'package:open_eye/ext/get_extension.dart';
 import 'package:open_eye/res/colors.dart';
 import 'package:open_eye/res/style.dart';
 import 'package:open_eye/route/routes.dart';
+import 'package:open_eye/utils/log_utils.dart';
 
 class MinePage extends BaseStatelessWidget<MineController> {
   const MinePage({Key? key}) : super(key: key);
@@ -165,6 +169,66 @@ class MinePage extends BaseStatelessWidget<MineController> {
                       "https://github.com/WinWang/open_eye\n开眼APP：整体项目架构基于Getx搭建，完成路由，依赖注入；网络请求框架基于Retrofit+Dio实现，配合官方JsonSerialize实现解析；"
                       "封装项目页面多状态（加载中，成功，失败，空数据）；封装列表页面下拉刷新+上拉加载更多等，具体更多内容，请下载项目了解更",
                   negaVisible: false);
+            },
+          ),
+          DividerStyle.divider2Padding20,
+          InkWell(
+            child: Container(
+              alignment: Alignment.centerLeft,
+              padding: EdgeInsets.only(left: 20.w, right: 30.w),
+              height: 100.w,
+              child: Row(
+                children: [
+                  Image.asset(
+                    "assets/images/icon_explore.png",
+                    width: 55.w,
+                    height: 55.w,
+                  ),
+                  Box.wBox30,
+                  Text("重复页面", style: Styles.style_000000_30)
+                ],
+              ),
+            ),
+            onTap: () {
+              ///跳转相同页面多次，使用时间戳当作动态key
+              LogD(DateTime.now().millisecondsSinceEpoch.toString());
+              Get.to(() => TestPage(tagKey: "12"),
+                  routeName: "12",
+                  // preventDuplicates: false,
+                  binding: TestBinding("12"));
+              Timer(const Duration(milliseconds: 10), () {
+                Get.to(() => TestPage(tagKey: "34"),
+                    routeName: "34",
+                    // preventDuplicates: false,
+                    binding: TestBinding("34"));
+              });
+              // ///连续两次调用回退回关闭同时进栈的页面，可以通过延迟器Timer解决，哪怕时间无延迟
+              // Get.to(() => TestPage(tagKey: "34"),
+              //     routeName: "34",
+              //     // preventDuplicates: false,
+              //     binding: TestBinding("34"));
+            },
+          ),
+          DividerStyle.divider2Padding20,
+          InkWell(
+            child: Container(
+              alignment: Alignment.centerLeft,
+              padding: EdgeInsets.only(left: 20.w, right: 30.w),
+              height: 100.w,
+              child: Row(
+                children: [
+                  Image.asset(
+                    "assets/images/icon_complain.png",
+                    width: 55.w,
+                    height: 55.w,
+                  ),
+                  Box.wBox30,
+                  Text("投诉/反馈", style: Styles.style_000000_30)
+                ],
+              ),
+            ),
+            onTap: () {
+              Get.toNamed(AppRoutes.complainHomePage);
             },
           ),
           DividerStyle.divider2Padding20,

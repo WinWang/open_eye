@@ -1,9 +1,8 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:keframe/size_cache_widget.dart';
 import 'package:open_eye/base/controller/base_refresh_controller.dart';
-import 'package:open_eye/base/pageWidget/base_stateful_widget.dart';
+import 'package:open_eye/base/pageWidget/base_stateless_widget.dart';
 import 'package:open_eye/business/home_page/model/Feed_entity.dart';
 import 'package:open_eye/business/home_page/model/ItemList.dart';
 import 'package:open_eye/business/home_page/widget/item_home_widget.dart';
@@ -12,20 +11,35 @@ import 'package:open_eye/route/router_utils.dart';
 import 'package:open_eye/utils/log_utils.dart';
 import 'package:open_eye/widget/pull_smart_refresher.dart';
 
-class HomePage extends BaseStatefulWidget<HomeController> {
-  const HomePage({Key? key}) : super(key: key);
+///测试用来跳转多次页面，使用Tag生成Controller，每次产生独立对象---具体类似购物车，视频播放详情等页面多次跳转业务
+// ignore: must_be_immutable
+class TestPage extends BaseStatelessWidget<TestController> {
+  String tagKey;
+
+  TestPage({Key? key, required this.tagKey}) : super(key: key) {
+    LogD("获取到的标签>>>>>>>>>>>>>>>>$tagKey");
+  }
+
+  ///不使用Binding方式可以重写Controller方法获取controller
+  // @override
+  // TestController get controller => Get.put(TestController(), tag: tagKey);
+
+  @override
+  String? get tag => tagKey;
 
   @override
   Widget buildContent(BuildContext context) {
     return SizedBox(
-      child: SizeCacheWidget(child: RefreshWidget<HomeController>(
+      child: RefreshWidget<TestController>(
+          controllerTag: tagKey,
+          refreshController: controller.refreshController,
           child: ListView.builder(
             itemBuilder: (context, index) {
-              return ItemHomeWidget(
-                  controller.dataList[index], index, controller.swiperController);
+              return ItemHomeWidget(controller.dataList[index], index,
+                  controller.swiperController);
             },
             itemCount: controller.dataList.length,
-          )),),
+          )),
     );
   }
 
@@ -33,7 +47,7 @@ class HomePage extends BaseStatefulWidget<HomeController> {
   String titleString() => "首页";
 
   @override
-  bool showBackButton() => false;
+  bool showBackButton() => true;
 
   ///搜索按钮
   @override
@@ -48,7 +62,7 @@ class HomePage extends BaseStatefulWidget<HomeController> {
   }
 }
 
-class HomeController extends BaseRefreshController<ApiService> {
+class TestController extends BaseRefreshController<ApiService> {
   RxList<ItemList> dataList = <ItemList>[].obs;
   SwiperController swiperController = SwiperController();
   String date = "";
@@ -61,7 +75,6 @@ class HomeController extends BaseRefreshController<ApiService> {
   @override
   void onReady() {
     super.onReady();
-    LogD("Home初始化onResume");
     loadNet();
   }
 
@@ -86,9 +99,13 @@ class HomeController extends BaseRefreshController<ApiService> {
   }
 }
 
-class HomeBinding extends Bindings {
+class TestBinding implements Bindings {
+  String bindingTag;
+
+  TestBinding(this.bindingTag);
+
   @override
   void dependencies() {
-    Get.lazyPut(() => HomeController());
+    Get.lazyPut(() => TestController(), tag: bindingTag);
   }
 }

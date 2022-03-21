@@ -30,7 +30,8 @@ class ItemTopicDetailWidget extends CommonStatelessWidget {
     return _createContent(context);
   }
 
-  Widget _createContent(BuildContext context) {
+  Widget _createContent(BuildContext? context) {
+    VisibilityDetectorController.instance.updateInterval = Duration.zero;
     return Obx(() => VisibilityDetector(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -68,10 +69,10 @@ class ItemTopicDetailWidget extends CommonStatelessWidget {
                             width: 100.w,
                           ),
                           onTap: () async {
-                            var height = context.size?.height ?? 0;
-                            var height2 = context.height;
-                            var top = MediaQuery.of(context).viewPadding.top;
-                            LogD("高度>>>>>>$height>>>>>>$height2>>>>>>>>$top");
+                            var height = context?.size?.height ?? 0;
+                            // var height2 = context?.height;
+                            // var top = MediaQuery.of(context).viewPadding.top;
+                            // LogD("高度>>>>>>$height>>>>>>$height2>>>>>>>>$top");
                             callback(height);
                             playIndex.value = itemIndex;
                             await player.reset();
@@ -102,14 +103,25 @@ class ItemTopicDetailWidget extends CommonStatelessWidget {
           ),
           onVisibilityChanged: (visibilityInfo) {
             if (visibilityInfo.visibleFraction == 0) {
-              var key = visibilityInfo.key as ValueKey;
-              if (playIndex.value.toString() == key.value) {
-                LogWTF("滚动监听>>>>>>>>>>${playIndex.value.toString()}");
-                var isLandscape = context.isLandscape;
-                if (!isLandscape) {
-                  player.reset();
-                  playIndex.value = -1;
+              try {
+                var key = visibilityInfo.key as ValueKey;
+                if (playIndex.value.toString() == key.value) {
+                  LogWTF("滚动监听>>>>>>>>>>${playIndex.value.toString()}");
+                  if (null != context) {
+                    var isLandscape = context.isLandscape;
+                    var width = context.width;
+                    var height = context.height;
+                    LogD("宽高监听>>>>>>>$width>>>>>>$height");
+                    if (!isLandscape) {
+                      LogWTF("滚动监听竖屏监听》》》》》》》》");
+                      player.reset();
+                      playIndex.value = -1;
+                    }
+                  }
                 }
+                // ignore: empty_catches
+              } catch (e) {
+                LogE("滚动控件监听异常>>>>>>>${e.toString()}");
               }
             }
           },

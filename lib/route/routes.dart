@@ -1,5 +1,10 @@
 import 'package:get/get.dart';
 import 'package:open_eye/business/common/photo_preview_page.dart';
+import 'package:open_eye/business/complain/complain_common_page.dart';
+import 'package:open_eye/business/complain/complain_home_page.dart';
+import 'package:open_eye/business/complain/complain_my_list_page.dart';
+import 'package:open_eye/business/complain/complain_recod_page.dart';
+import 'package:open_eye/business/complain/complain_submit_page.dart';
 import 'package:open_eye/business/detail_page/detail_page.dart';
 import 'package:open_eye/business/find_page/children_page/category_page.dart';
 import 'package:open_eye/business/find_page/children_page/focus_page.dart';
@@ -31,6 +36,11 @@ abstract class AppRoutes {
   static const typeDetailPage = "/type_detail_page"; //分类详情页面
   static const topicDetailPage = "/topic_detail_page"; //专题详情页面
   static const photoPreviewPage = "/photo_preview_page"; //通用图片预览
+  static const complainHomePage = "/complain_home_page"; //投诉反馈首页
+  static const complainCommonPage = "/complain_common_page"; //投诉反馈普通问题页面
+  static const complainSubmitPage = "/complain_submit_page"; //投诉反馈-提交问题
+  static const complainMylistPage = "/complain_my_list_page"; //投诉反馈-我的反馈
+  static const complainMyRecordPage = "/complain_my_record_page"; //我的反馈-我的反馈
 
   static final routerPages = [
     ///主入口
@@ -109,8 +119,8 @@ abstract class AppRoutes {
       name: AppRoutes.detailPage,
       page: () => const DetailPage(),
       binding: DetailBinding(),
-      // transitionDuration: const Duration(milliseconds: 500),
-      // transition: Transition.native
+      transitionDuration: const Duration(milliseconds: 350),
+      transition: Transition.fadeIn
     ),
 
     ///分类详情
@@ -126,6 +136,30 @@ abstract class AppRoutes {
       page: () => const TopicDetailPage(),
       binding: TopicDetailBinding(),
     ),
+
+    GetPage(
+        name: complainHomePage,
+        transition: Transition.zoom,
+        page: () => const ComplainHomePage(),
+        binding: ComplainHomeBinding(),
+        children: [
+          GetPage(
+              name: complainCommonPage,
+              page: () => const ComplainCommonPage(),
+              binding: ComplainCommonBinding()),
+          GetPage(
+              name: complainSubmitPage,
+              page: () => const ComplainSubmitPage(),
+              binding: ComplainSubmitBinding()),
+          GetPage(
+              name: complainMylistPage,
+              page: () => const ComplainMyListPage(),
+              binding: ComplainMyListBinding()),
+          GetPage(
+              name: complainMyRecordPage,
+              page: () => const ComplainRecordPage(),
+              binding: ComplainRecordBinding()),
+        ]),
 
     ///图片预览页面
     GetPage(

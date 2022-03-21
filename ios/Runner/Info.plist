@@ -43,5 +43,53 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<!-- 相册 -->
+    <!-- 读取 -->
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>需要您的同意,APP才能访问相册</string>
+    <!-- 存入 -->
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>需要访问您的相册，以保存图片到相册</string>
+
+    <!-- 相机 -->
+    <key>NSCameraUsageDescription</key>
+    <string>需要您的同意,APP才能访问相机</string>
+
+    <!-- 麦克风 -->
+    <key>NSMicrophoneUsageDescription</key>
+    <string>需要您的同意,APP才能访问麦克风</string>
+
+    <!-- 位置 -->
+    <!-- 位置 -->
+    <key>NSLocationUsageDescription</key>
+    <string>需要您的同意, APP才能访问位置</string>
+    <!-- 在使用期间访问位置 -->
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>App需要您的同意, APP才能在使用期间访问位置</string>
+    <!-- 始终访问位置 -->
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>App需要您的同意, APP才能始终访问位置</string>
+
+    <!-- 日历 -->
+    <key>NSCalendarsUsageDescription</key>
+    <string>App需要您的同意, APP才能访问日历</string>
+    <!-- 提醒事项 -->
+    <key>NSRemindersUsageDescription</key>
+    <string>需要您的同意, APP才能访问提醒事项</string>
+    <!-- 运动与健身 -->
+    <key>NSMotionUsageDescription</key>
+    <string>需要您的同意, APP才能访问运动与健身</string>
+    <!-- 健康更新 -->
+    <key>NSHealthUpdateUsageDescription</key>
+    <string>需要您的同意, APP才能访问健康更新 </string>
+    <!-- 健康分享 -->
+    <key>NSHealthShareUsageDescription</key>
+    <string>需要您的同意, APP才能访问健康分享</string>
+    <!-- 蓝牙 -->
+    <key>NSBluetoothPeripheralUsageDescription</key>
+    <string>需要您的同意, APP才能访问蓝牙</string>
+    <!-- 媒体资料库 -->
+    <key>NSAppleMusicUsageDescription</key>
+    <string>需要您的同意, APP才能访问媒体资料库</string>
 </dict>
 </plist>

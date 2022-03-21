@@ -154,6 +154,23 @@ class TopicDetailController extends BaseController<ApiService> {
     player.removeListener(_playerStateChanged);
     player.release();
   }
+
+  @override
+  void onResumed() {
+    super.onResumed();
+    if (player.state == FijkState.paused) {
+      player.start();
+    }
+  }
+
+  @override
+  void onPaused() {
+    super.onPaused();
+    if(player.state == FijkState.started){
+      player.pause();
+    }
+  }
+
 }
 
 class TopicDetailBinding extends Bindings {

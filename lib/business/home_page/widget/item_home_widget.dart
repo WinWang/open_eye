@@ -7,6 +7,7 @@ import 'package:open_eye/base/pageWidget/common_stateless_widget.dart';
 import 'package:open_eye/business/home_page/model/ItemList.dart';
 import 'package:open_eye/res/colors.dart';
 import 'package:open_eye/res/style.dart';
+import 'package:open_eye/route/router_utils.dart';
 import 'package:open_eye/route/routes.dart';
 import 'package:open_eye/widget/base_network_image.dart';
 
@@ -81,11 +82,14 @@ class ItemHomeWidget extends CommonStatelessWidget {
                 width: double.infinity,
                 decoration:
                     BoxDecoration(borderRadius: BorderRadius.circular(20.w)),
-                child: BaseNetworkImage(
-                  itemData.data?.cover?.feed ?? "",
-                  height: 400.w,
-                  width: double.infinity,
-                  fit: BoxFit.fitWidth,
+                child: Hero(
+                  tag: itemData.data?.id?.toString() ?? "",
+                  child: BaseNetworkImage(
+                    itemData.data?.cover?.feed ?? "",
+                    height: 400.w,
+                    width: double.infinity,
+                    fit: BoxFit.fitWidth,
+                  ),
                 ),
               ),
               Positioned(
@@ -115,12 +119,17 @@ class ItemHomeWidget extends CommonStatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Box.wBox16,
-                ClipOval(
-                  child: BaseNetworkImage(
-                    itemData.data?.author?.icon ?? "",
-                    width: 80.w,
-                    height: 80.w,
+                GestureDetector(
+                  child: ClipOval(
+                    child: BaseNetworkImage(
+                      itemData.data?.author?.icon ?? "",
+                      width: 80.w,
+                      height: 80.w,
+                    ),
                   ),
+                  onTap: () {
+                    RouterUtils.toPreviewPhotoView(itemData.data?.author?.icon);
+                  },
                 ),
                 Box.wBox16,
                 Column(

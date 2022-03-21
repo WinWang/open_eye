@@ -15,6 +15,13 @@ class RouterUtils {
     Get.toNamed(AppRoutes.searchPage);
   }
 
+  ///跳转投诉详情列表页面
+  static void toComplainRecordPage(int? id) {
+    Get.toNamed(
+        AppRoutes.complainHomePage + AppRoutes.complainMyRecordPage,
+        arguments: id);
+  }
+
 
 
 }

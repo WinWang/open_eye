@@ -4,6 +4,7 @@ import 'package:open_eye/base/pageWidget/common_stateless_widget.dart';
 import 'package:open_eye/business/find_page/model/Type_entity.dart';
 import 'package:open_eye/res/colors.dart';
 
+// ignore: must_be_immutable
 class ItemCategoryWidget extends CommonStatelessWidget {
   TypeEntity itemData;
 

@@ -43,11 +43,14 @@ class ItemRankWidget extends CommonStatelessWidget {
                 width: double.infinity,
                 decoration:
                     BoxDecoration(borderRadius: BorderRadius.circular(20.w)),
-                child: BaseNetworkImage(
-                  itemData.data?.cover?.feed ?? "",
-                  height: 400.w,
-                  width: double.infinity,
-                  fit: BoxFit.fitWidth,
+                child: Hero(
+                  tag: itemData.data?.id.toString() ?? "",
+                  child: BaseNetworkImage(
+                    itemData.data?.cover?.feed ?? "",
+                    height: 400.w,
+                    width: double.infinity,
+                    fit: BoxFit.fitWidth,
+                  ),
                 ),
               ),
               Positioned(

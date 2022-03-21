@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,17 +10,30 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'base/pageWidget/common_stateful_widget.dart';
 import 'constant/http_url.dart';
+import 'dart:ui';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initSDK();
+  // if (window.physicalSize.isEmpty) {
+  //   window.onMetricsChanged = () {
+  //     //在回调中，size仍然有可能是0
+  //     if (!window.physicalSize.isEmpty) {
+  //       window.onMetricsChanged = null;
+  //       runApp(MyApp());
+  //     }
+  //   };
+  // } else {
+  //   //如果size非0，则直接runApp
+  //   runApp(MyApp());
+  // }
   runApp(MyApp());
   // DoKit.runApp(app: DoKitApp( MyApp()));
 }
 
 ///初始化SDK
 Future<void> initSDK() async {
-  SharedPreferences.setMockInitialValues({});
+  // SharedPreferences.setMockInitialValues({});
   await Injection().init();
 }
 
@@ -73,17 +85,17 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  // void _handlerRouteMethodChannel() {
-  //   _channel.setMethodCallHandler((call) async {
-  //     var method = call.method;
-  //     if (method == "changeRouter") {
-  //       var arguments = call.arguments;
-  //       var map = arguments as Map;
-  //       var routePath = map["router"];
-  //       _handleRouter(routePath);
-  //       // LogD("<><><><><>${arguments.toString()}");
-  //       // Get.toNamed(AppRoutes.DEFAULT_PAGE, arguments: arguments,preventDuplicates: false);
-  //     }
-  //   });
-  // }
+// void _handlerRouteMethodChannel() {
+//   _channel.setMethodCallHandler((call) async {
+//     var method = call.method;
+//     if (method == "changeRouter") {
+//       var arguments = call.arguments;
+//       var map = arguments as Map;
+//       var routePath = map["router"];
+//       _handleRouter(routePath);
+//       // LogD("<><><><><>${arguments.toString()}");
+//       // Get.toNamed(AppRoutes.DEFAULT_PAGE, arguments: arguments,preventDuplicates: false);
+//     }
+//   });
+// }
 }

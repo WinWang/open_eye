@@ -308,7 +308,12 @@ class _DefaultFijkPanelState extends State<_DefaultFijkPanel> {
           absorbing: _hideStuff,
           child: Column(
             children: <Widget>[
-              Container(height: barHeight),
+              Container(
+                padding: EdgeInsets.only(left: 32.w),
+                alignment: Alignment.centerLeft,
+                height: barHeight,
+                child: _buildTopBackBtn(),
+              ),
               Expanded(
                 child: GestureDetector(
                   onTap: () {
@@ -368,5 +373,48 @@ class _DefaultFijkPanelState extends State<_DefaultFijkPanel> {
         ),
       ),
     );
+  }
+
+  // 返回按钮
+  // Widget? _buildTopBackBtn() {
+  //   return widget.player.value.fullScreen
+  //       ? IconButton(
+  //           icon: const Icon(Icons.arrow_back),
+  //           padding: const EdgeInsets.only(
+  //             left: 10.0,
+  //             right: 10.0,
+  //             // top:
+  //           ),
+  //           splashColor: Colors.transparent,
+  //           highlightColor: Colors.transparent,
+  //           color: Colors.white,
+  //           onPressed: () {
+  //             player.exitFullScreen();
+  //           },
+  //         )
+  //       : null;
+  // }
+  ///返回按钮
+  AnimatedOpacity? _buildTopBackBtn() {
+    return widget.player.value.fullScreen
+        ? AnimatedOpacity(
+            opacity: _hideStuff ? 0.0 : 0.8,
+            duration: const Duration(milliseconds: 400),
+            child: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              padding: const EdgeInsets.only(
+                left: 10.0,
+                right: 10.0,
+                // top:
+              ),
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              color: Colors.white,
+              onPressed: () {
+                player.exitFullScreen();
+              },
+            ),
+          )
+        : null;
   }
 }
