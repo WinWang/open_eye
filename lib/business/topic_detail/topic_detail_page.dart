@@ -103,6 +103,7 @@ class TopicDetailPage extends BaseStatelessWidget<TopicDetailController> {
           style: Styles.style_white_32_bold,
         ));
   }
+
 }
 
 class TopicDetailController extends BaseController<ApiService> {
@@ -166,11 +167,10 @@ class TopicDetailController extends BaseController<ApiService> {
   @override
   void onPaused() {
     super.onPaused();
-    if(player.state == FijkState.started){
+    if (player.state == FijkState.started) {
       player.pause();
     }
   }
-
 }
 
 class TopicDetailBinding extends Bindings {

@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:keframe/size_cache_widget.dart';
 import 'package:open_eye/base/controller/base_controller.dart';
 import 'package:open_eye/base/pageWidget/base_stateless_widget.dart';
 import 'package:open_eye/business/complain/model/Feedback_detail_list_entity.dart';
@@ -18,6 +19,7 @@ import 'package:open_eye/res/style.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:open_eye/utils/keyboard_util.dart';
+import 'package:open_eye/utils/log_utils.dart';
 
 //我的反馈页面UI
 class ComplainRecordPage extends BaseStatelessWidget<ComplainRecordController> {
@@ -38,7 +40,8 @@ class ComplainRecordPage extends BaseStatelessWidget<ComplainRecordController> {
             children: [
               Expanded(
                   flex: 1,
-                  child: ListView.builder(
+                  child: SizeCacheWidget(
+                      child: ListView.builder(
                     itemBuilder: (context, index) {
                       return ItemFeedbackRecordWidget(
                           controller.recordList[index]);
@@ -46,7 +49,7 @@ class ComplainRecordPage extends BaseStatelessWidget<ComplainRecordController> {
                     },
                     itemCount: controller.recordList.length,
                     controller: controller.scrollController,
-                  )),
+                  ))),
               Container(
                 color: ColorStyle.color_FFFFFF,
                 height: 112.w,
@@ -154,11 +157,14 @@ class ComplainRecordController extends BaseController<GatewayApi> {
         (value) {
       recordList.clear();
       recordList.addAll(value.resObject?.list ?? []);
-
-      ///滚动到底部
-      _timer = Timer(const Duration(milliseconds: 700), () {
-        scrollController.jumpTo(scrollController.position.maxScrollExtent);
-      });
+      if(recordList.isEmpty){
+        showEmpty();
+      }else{
+        ///滚动到底部
+        _timer = Timer(const Duration(milliseconds: 700), () {
+          scrollController.jumpTo(scrollController.position.maxScrollExtent);
+        });
+      }
     });
   }
 

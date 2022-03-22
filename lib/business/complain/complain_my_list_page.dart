@@ -63,6 +63,9 @@ class ComplainMyListController extends BaseRefreshController<GatewayApi> {
         feedbackList.clear();
       }
       feedbackList.addAll(value.resObject!);
+      if(feedbackList.isEmpty){
+        showEmpty();
+      }
       hideRefresh(refreshController);
     });
   }
