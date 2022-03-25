@@ -5,6 +5,7 @@ import 'package:open_eye/business/complain/complain_home_page.dart';
 import 'package:open_eye/business/complain/complain_my_list_page.dart';
 import 'package:open_eye/business/complain/complain_recod_page.dart';
 import 'package:open_eye/business/complain/complain_submit_page.dart';
+import 'package:open_eye/business/custom_paint_page/CustomPaintPage.dart';
 import 'package:open_eye/business/detail_page/detail_page.dart';
 import 'package:open_eye/business/find_page/children_page/category_page.dart';
 import 'package:open_eye/business/find_page/children_page/focus_page.dart';
@@ -41,6 +42,7 @@ abstract class AppRoutes {
   static const complainSubmitPage = "/complain_submit_page"; //投诉反馈-提交问题
   static const complainMylistPage = "/complain_my_list_page"; //投诉反馈-我的反馈
   static const complainMyRecordPage = "/complain_my_record_page"; //我的反馈-我的反馈
+  static const customPaintPage = "/custom_paint_page"; //自定义控件
 
   static final routerPages = [
     ///主入口
@@ -84,20 +86,17 @@ abstract class AppRoutes {
         binding: FindBinding(),
         children: [
           GetPage(
-            name: AppRoutes.focusPage,
-            page: () => FocusPage(tagType: "route"),
-            binding: FocusBinding()
-          ),
+              name: AppRoutes.focusPage,
+              page: () => FocusPage(tagType: "route"),
+              binding: FocusBinding()),
           GetPage(
-            name: AppRoutes.categoryPage,
-            page: () => CategoryPage(tagType: "route"),
-            binding: CategoryBinding()
-          ),
+              name: AppRoutes.categoryPage,
+              page: () => CategoryPage(tagType: "route"),
+              binding: CategoryBinding()),
           GetPage(
-            name: AppRoutes.topicPage,
-            page: () => TopicPage(tagType: "route"),
-            binding: TopicBinding()
-          )
+              name: AppRoutes.topicPage,
+              page: () => TopicPage(tagType: "route"),
+              binding: TopicBinding())
         ]),
 
     ///我的Tab
@@ -116,12 +115,11 @@ abstract class AppRoutes {
 
     ///视频详情
     GetPage(
-      name: AppRoutes.detailPage,
-      page: () => const DetailPage(),
-      binding: DetailBinding(),
-      transitionDuration: const Duration(milliseconds: 350),
-      transition: Transition.fadeIn
-    ),
+        name: AppRoutes.detailPage,
+        page: () => const DetailPage(),
+        binding: DetailBinding(),
+        transitionDuration: const Duration(milliseconds: 350),
+        transition: Transition.fadeIn),
 
     ///分类详情
     GetPage(
@@ -166,6 +164,12 @@ abstract class AppRoutes {
         name: photoPreviewPage,
         transition: Transition.zoom,
         page: () => const PhotoPreviewPage(),
-        binding: PhotoPreviewBinding())
+        binding: PhotoPreviewBinding()),
+
+    ///自定义控件预览
+    GetPage(
+        name: customPaintPage,
+        page: () => const CustomPaintPage(),
+        binding: CustomPaintBinding())
   ];
 }

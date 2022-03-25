@@ -6,7 +6,9 @@ import 'package:open_eye/res/colors.dart';
 import 'package:open_eye/res/style.dart';
 import 'package:open_eye/route/router_utils.dart';
 import 'package:open_eye/widget/base_network_image.dart';
+import 'package:open_eye/widget/image_extends.dart';
 
+// ignore: must_be_immutable
 class ItemFeedbackRecordWidget extends CommonStatelessWidget {
   FeedbackListItemEntity itemEntity;
 
@@ -99,6 +101,34 @@ class ItemFeedbackRecordWidget extends CommonStatelessWidget {
       //   width: 250.w,
       //   fit: BoxFit.fitWidth,
       // );
+
+      // return GestureDetector(
+      //     child: SizedBox(
+      //       width: 250.w,
+      //       // height: 250.w,
+      //       child: ImageExends(
+      //         imgUrl: itemEntity.content ?? "",
+      //         // "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.sucai.redocn.com%2Fattachments%2Fimages%2F201108%2F20110803%2FRedocn_2011073014594209.jpg&refer=http%3A%2F%2Fimg.sucai.redocn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1647776775&t=68a94bf059e39da45132b775c3504a13",
+      //         // width: 250.w,
+      //         // height: 200.w,
+      //         // fit: BoxFit.cover,
+      //       ),
+      //     ),
+      //     onTap: () {
+      //       RouterUtils.toPreviewPhotoView(itemEntity.content);
+      //     });
+
+      // return GestureDetector(
+      //     child: Image.network(
+      //       itemEntity.content ?? "",
+      //       // "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.sucai.redocn.com%2Fattachments%2Fimages%2F201108%2F20110803%2FRedocn_2011073014594209.jpg&refer=http%3A%2F%2Fimg.sucai.redocn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1647776775&t=68a94bf059e39da45132b775c3504a13",
+      //       width: 250.w,
+      //       height: 200.w,
+      //       fit: BoxFit.cover,
+      //     ),
+      //     onTap: () {
+      //       RouterUtils.toPreviewPhotoView(itemEntity.content);
+      //     });
 
       return GestureDetector(
           child: BaseNetworkImage(

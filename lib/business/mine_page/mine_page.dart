@@ -232,6 +232,28 @@ class MinePage extends BaseStatelessWidget<MineController> {
             },
           ),
           DividerStyle.divider2Padding20,
+          InkWell(
+            child: Container(
+              alignment: Alignment.centerLeft,
+              padding: EdgeInsets.only(left: 20.w, right: 30.w),
+              height: 100.w,
+              child: Row(
+                children: [
+                  Image.asset(
+                    "assets/images/icon_custom.png",
+                    width: 55.w,
+                    height: 55.w,
+                  ),
+                  Box.wBox30,
+                  Text("自定义控件", style: Styles.style_000000_30)
+                ],
+              ),
+            ),
+            onTap: () {
+              Get.toNamed(AppRoutes.customPaintPage);
+            },
+          ),
+          DividerStyle.divider2Padding20,
         ],
       ),
     );

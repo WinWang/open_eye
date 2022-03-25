@@ -250,6 +250,8 @@ class ComplainSubmitController extends BaseController<GatewayApi> {
         Get.offNamed(
             AppRoutes.complainHomePage + AppRoutes.complainMyRecordPage,
             arguments: value.resObject);
+      }else{
+        showToast(value.resMessage);
       }
     }, handleError: false);
   }
