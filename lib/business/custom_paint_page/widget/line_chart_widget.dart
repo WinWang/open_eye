@@ -31,10 +31,10 @@ class LineChartState extends State<LineChartWidget> {
         size: Size(double.infinity, 400.w),
       ),
       onTapDown: (details) {
-        LogD("msg>>>>>>>手指放下");
+        // LogD("msg>>>>>>>手指放下");
       },
       onTapUp: (details) {
-        LogD("msg>>>>>>>手指抬起");
+        // LogD("msg>>>>>>>手指抬起");
         setState(() {
           hasDown = false;
           dx = -1;
@@ -42,7 +42,7 @@ class LineChartState extends State<LineChartWidget> {
         });
       },
       onLongPressDown: (LongPressDownDetails details) {
-        LogD("msg>>>>>>手指长按下");
+        // LogD("msg>>>>>>手指长按下");
         setState(() {
           hasDown = true;
           dx = details.localPosition.dx;
@@ -50,7 +50,7 @@ class LineChartState extends State<LineChartWidget> {
         });
       },
       onLongPressUp: () {
-        LogD("msg>>>>>>>长按手指抬起");
+        // LogD("msg>>>>>>>长按手指抬起");
         setState(() {
           hasDown = false;
           dx = -1;
@@ -58,14 +58,14 @@ class LineChartState extends State<LineChartWidget> {
         });
       },
       onLongPressMoveUpdate: (LongPressMoveUpdateDetails details) {
-        LogD("${details.localPosition.dx}>>>>>${details.localPosition.dy}");
+        // LogD("${details.localPosition.dx}>>>>>${details.localPosition.dy}");
         setState(() {
           dx = details.localPosition.dx;
           dy = details.localPosition.dy;
         });
       },
       onLongPressEnd: (LongPressEndDetails details) {
-        LogD("msg>>>>>>>>>长按结束");
+        // LogD("msg>>>>>>>>>长按结束");
         setState(() {
           hasDown = false;
           dx = -1;
@@ -74,11 +74,11 @@ class LineChartState extends State<LineChartWidget> {
       },
 
       onHorizontalDragDown: (details){
-        LogD("msg>>>>>>>>>>>onHorizontalDragDown");
+        // LogD("msg>>>>>>>>>>>onHorizontalDragDown");
       },
 
       onHorizontalDragUpdate: (details){
-        LogD("msg>>>>>>>>>>onHorizontalDragUpdate");
+        // LogD("msg>>>>>>>>>>onHorizontalDragUpdate");
         setState(() {
           dx = details.localPosition.dx;
           dy = details.localPosition.dy;

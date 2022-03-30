@@ -34,7 +34,7 @@ class BaseNetworkImage extends CachedNetworkImage {
             return Icon(
               Icons.image,
               size: size,
-              color: ColorStyle.color_666666,
+              color: ColorStyle.color_999999,
             );
             return Image.asset(
               "assets/images/back_placeholder.png", width: width,

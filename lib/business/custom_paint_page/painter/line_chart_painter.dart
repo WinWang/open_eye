@@ -10,6 +10,24 @@ class LineChartPainter extends CustomPainter {
   double dx; //手指触摸的x坐标
   double dy; //手指
   bool hasDown; //是否选中
+  ///初始化画笔-圆点
+  var paintCircle = Paint()
+    ..isAntiAlias = true
+    ..style = PaintingStyle.fill
+    ..color = ColorStyle.color_FE8C28;
+
+  ///绘制选中矩形
+  var paintRect = Paint()
+    ..isAntiAlias = true
+    ..style = PaintingStyle.fill
+    ..color = ColorStyle.color_555555;
+
+  ///初始化画笔-折线
+  var paintLine = Paint()
+    ..isAntiAlias = true
+    ..style = PaintingStyle.stroke
+    ..strokeWidth = 2.w
+    ..color = ColorStyle.color_EA4C43;
 
   LineChartPainter(
       {required this.chartList,
@@ -71,24 +89,7 @@ class LineChartPainter extends CustomPainter {
   }
 
   void drawLine(Canvas canvas, Rect rect, Size size) {
-    ///初始化画笔-圆点
-    var paintCircle = Paint()
-      ..isAntiAlias = true
-      ..style = PaintingStyle.fill
-      ..color = ColorStyle.color_FE8C28;
 
-    ///绘制选中矩形
-    var paintRect = Paint()
-      ..isAntiAlias = true
-      ..style = PaintingStyle.fill
-      ..color = ColorStyle.color_555555;
-
-    ///初始化画笔-折线
-    var paintLine = Paint()
-      ..isAntiAlias = true
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 2.w
-      ..color = ColorStyle.color_EA4C43;
 
     var path = Path();
     var width = size.width;

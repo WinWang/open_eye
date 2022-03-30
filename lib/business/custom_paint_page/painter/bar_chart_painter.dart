@@ -91,7 +91,7 @@ class BarChartPainter extends CustomPainter {
   void drawBarchart(Rect rect, Size size, Canvas canvas) {
     var perWidth = size.width / (chartList.length + 1);
     var heightValue = size.height / (maxValue - minValue);
-    LogD("msg>>>>>>>${size.height}");
+    // LogD("msg>>>>>>>${size.height}");
     for (int i = 0; i < chartList.length; i++) {
       var itemValue = chartList[i];
       var xPosition = perWidth * (i + 1);
@@ -106,9 +106,12 @@ class BarChartPainter extends CustomPainter {
     if (hasTouchDonw && dx > 0 && dy > 0) {
       var perWidth = size.width / (chartList.length + 1);
       var index = (dx / perWidth).round(); //理论上应该选中的Bar
-      LogD("选中角标>>>>>>>>>$index");
+      // LogD("选中角标>>>>>>>>>$index");
       var xPosition = index * perWidth;
       var heightValue = size.height / (maxValue - minValue);
+      if ((index - 1) > chartList.length - 1 || (index - 1) < 0) {
+        return;
+      }
       var itemValue = chartList[index - 1];
       var yPosition = size.height - heightValue * itemValue;
 

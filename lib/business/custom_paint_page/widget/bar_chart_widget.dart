@@ -22,15 +22,15 @@ class BarChartState extends State<BarChartWidget> {
   double dx = -1;
   double dy = -1;
   bool hasTouchDown = false;
-  late ui.Image _image;
+  ui.Image?_image;
 
   @override
   void initState() {
     super.initState();
-    LogE(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>初始状态msg");
+    // LogE(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>初始状态msg");
     load("assets/images/icon_text_tag.png")
         .then((value) {
-      LogE("获取图片>>>>>>>>>>>" + value.toString());
+      // LogE("获取图片>>>>>>>>>>>" + value.toString());
       setState(() {
         _image = value;
       });

@@ -50,7 +50,7 @@ class CircleChartPainter extends CustomPainter {
       circlePaint.color = colorList[i];
       var percent = value / totalValue;
       var angel = percentAngle * value * pi / 180;
-      LogD("$startAngle角度>>>>>>$angel<<<<<<");
+      // LogD("$startAngle角度>>>>>>$angel<<<<<<");
       canvas.drawArc(rect, startAngle, angel, true, circlePaint);
       startAngle += angel;
     }
