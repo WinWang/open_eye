@@ -27,6 +27,7 @@ class CustomPaintPage extends BaseStatelessWidget<CustomPaintController> {
             padding: EdgeInsets.all(25.w),
             child: LineChartWidget(chartList: controller.lineCharttList.value),
           ),
+          Text("滚动缩放折线图", style: Styles.style_black_32),
           Container(
             child: LinesChartWidget(controller.linesCharttList.value),
             padding: EdgeInsets.all(25.w),

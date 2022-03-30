@@ -34,6 +34,10 @@
 
 <img src="https://github.com/WinWang/open_eye/blob/master/screenshot/13.png" width="400px">
 
+<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/14.png" width="400px">
+
+<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/15.png" width="400px">
+
 
 
 ## Getting Started
