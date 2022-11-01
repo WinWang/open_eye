@@ -7,7 +7,7 @@
 下载链接 https://www.pgyer.com/KmIh
 
 
-<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/demo.gif" width="40%">
+<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/demo.gif" width="30%">
 <br/>
 <div style="display: flex; flex-direction: row">
 <img src="https://github.com/WinWang/open_eye/blob/master/screenshot/1.png" width="25%">
