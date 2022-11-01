@@ -6,38 +6,46 @@
 
 下载链接 https://www.pgyer.com/KmIh
 
-<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/demo.gif" width="400px">
 
-<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/1.png" width="400px">
+<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/demo.gif" width="40%">
+<br/>
+<div style="display: flex; flex-direction: row">
+<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/1.png" width="25%">
+<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/2.png" width="25%">
+<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/3.png" width="25%">
+</div>
 
-<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/2.png" width="400px">
+<br/>
 
-<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/3.png" width="400px">
+<div style="display: flex; flex-direction: row">
+<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/4.png" width="25%">
+<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/5.png" width="25%">
+<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/6.png" width="25%">
+</div>
 
-<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/4.png" width="400px">
+<br/>
 
-<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/5.png" width="400px">
+<div style="display: flex; flex-direction: row">
+<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/7.png" width="25%">
+<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/8.png" width="25%">
+<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/9.png" width="25%">
+</div>
 
-<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/6.png" width="400px">
+<br/>
 
-<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/7.png" width="400px">
+<div style="display: flex; flex-direction: row">
+<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/10.png" width="25%">
+<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/11.png" width="25%">
+<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/12.png" width="25%">
+</div>
+<br/>
 
-<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/8.png" width="400px">
-
-<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/9.png" width="400px">
-
-<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/10.png" width="400px">
-
-<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/11.png" width="400px">
-
-<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/12.png" width="400px">
-
-<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/13.png" width="400px">
-
-<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/14.jpg" width="400px">
-
-<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/15.jpg" width="400px">
-
+<div style="display: flex; flex-direction: row">
+<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/13.png" width="25%">
+<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/14.jpg" width="25%">
+<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/15.jpg" width="25%">
+</div>
+<br/>
 
 
 ## Getting Started
