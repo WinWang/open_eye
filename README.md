@@ -10,9 +10,9 @@ Fluter版本开眼APP：<br>
 
 **React版本**的开眼App链接(React18+React-Vant+Mobx+axios)：https://github.com/WinWang/react-oepn-eye <br>
 
-**Vue2版本**WanAndroid项目链接(Vue2+vuex+vant+axios)：https://github.com/WinWang/Vue-WanAndroid <br>
+**Vue2版本**WanAndroid链接(Vue2+vuex+vant+axios)：https://github.com/WinWang/Vue-WanAndroid <br>
 
-**Vue3版本**WanAndroid项目链接(vue3+typeScript+pinia+vant+vite)：https://github.com/WinWang/Vue3-wanAndroid
+**Vue3版本**WanAndroid链接(vue3+typeScript+pinia+vant+vite)：https://github.com/WinWang/Vue3-wanAndroid
 
 <img src="https://github.com/WinWang/open_eye/blob/master/screenshot/download.png" width="400px">
 
