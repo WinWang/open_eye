@@ -20,6 +20,54 @@ Fluter版本开眼APP，具体包含功能如下：<br>
 
 **Vue3版本**WanAndroid链接(vue3+typeScript+pinia+vant+vite)：https://github.com/WinWang/Vue3-wanAndroid
 
+## 图床链接图片 <br>
+<img src="https://s2.loli.net/2023/04/12/3I5GqNJnTEHUlC9.png" width="400px">
+
+下载链接 https://www.pgyer.com/KmIh
+
+
+<img src="https://github.com/WinWang/open_eye/blob/master/screenshot/demo.gif" width="30%">
+<br/>
+<div style="display: flex; flex-direction: row">
+<img src="https://s2.loli.net/2023/04/12/uRdS51WNI4UlHj7.png" width="25%">
+<img src="https://s2.loli.net/2023/04/12/4HpidAjgtyQSKVW.png" width="25%">
+<img src="https://s2.loli.net/2023/04/12/dfeO5ouCGmPUXAR.png" width="25%">
+</div>
+
+<br/>
+
+<div style="display: flex; flex-direction: row">
+<img src="https://s2.loli.net/2023/04/12/s8RI1bFfq7WiJM3.png" width="25%">
+<img src="https://s2.loli.net/2023/04/12/HqLhKcG6QPsWk4V.png" width="25%">
+<img src="https://s2.loli.net/2023/04/12/xju2cqQlKv9yJap.png" width="25%">
+</div>
+
+<br/>
+
+<div style="display: flex; flex-direction: row">
+<img src="https://s2.loli.net/2023/04/12/3rhxUOyK65JDuAz.png" width="25%">
+<img src="https://s2.loli.net/2023/04/12/pwNrsGJO9va48xQ.png" width="25%">
+<img src="https://s2.loli.net/2023/04/12/RkWDIcBjNbo1mpn.png" width="25%">
+</div>
+
+<br/>
+
+<div style="display: flex; flex-direction: row">
+<img src="https://s2.loli.net/2023/04/12/LUTgSvR3VPaAjyM.png" width="25%">
+<img src="https://s2.loli.net/2023/04/12/WkITDd9uMZLl5GQ.png" width="25%">
+<img src="https://s2.loli.net/2023/04/12/rIXAFqd3txPvjhf.png" width="25%">
+</div>
+<br/>
+
+<div style="display: flex; flex-direction: row">
+<img src="https://s2.loli.net/2023/04/12/6YRHqK3J9fv1imA.png" width="25%">
+<img src="https://s2.loli.net/2023/04/12/4oEqZg5BXvtxebV.jpg" width="25%">
+<img src="https://s2.loli.net/2023/04/12/yE24mshHFzwK9Jn.jpg" width="25%">
+</div>
+<br/>
+
+## github本地图片 <br> 
+
 <img src="https://github.com/WinWang/open_eye/blob/master/screenshot/download.png" width="400px">
 
 下载链接 https://www.pgyer.com/KmIh
