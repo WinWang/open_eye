@@ -20,6 +20,10 @@ Fluter版本开眼APP，具体包含功能如下：<br>
 
 **Vue3版本**WanAndroid链接(vue3+typeScript+pinia+vant+vite)：https://github.com/WinWang/Vue3-wanAndroid
 
+**Android组件化项目**ReadingGallery链接(jetpack+kotlin+koin+couroutine)：https://github.com/WinWang/ReadingGallery <br>
+
+**Android组件化项目初始化工具**ApplicationInit链接(gradle-plugin+注解APT+ASM)：https://github.com/WinWang/ApplicationInit <br>
+
 ## 图床链接图片 <br>
 <img src="https://s2.loli.net/2023/04/12/3I5GqNJnTEHUlC9.png" width="400px">
 
