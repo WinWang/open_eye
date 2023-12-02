@@ -12,6 +12,8 @@ Fluter版本开眼APP，具体包含功能如下：<br>
 
 ## 其他一些学习练手的项目
 
+**鸿蒙Harmony版本**的开眼App链接(ArkTs+ArkUI+API9)：https://github.com/WinWang/HarmoneyOpenEye
+
 **Flutter版本**的音乐播放App链接(getx+retrofit+dio)：https://github.com/WinWang/music_listener <br>
 
 **ReactNative版本**的开眼App链接(ReactNative-0.72)：https://github.com/WinWang/RNOpenEye <br>
